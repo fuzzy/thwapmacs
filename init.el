@@ -48,27 +48,41 @@
 (setq tab-width 2)
 (setq indent-tabs-mode 1)
 
-;; The T.H.W.A.P. Map
-;; This is the base starting point for the T.H.W.A.P. keybindings
-(define-prefix-command 'thwap-map)
-(global-set-key (kbd "C-t") 'thwap-map)
+;; Set the default help lines
+(setq thwap-help-lines '("--------------"
+												 "All T.H.W.A.P. commands will start with 'C-c t'"
+												 ""
+												 "Welcome to the T.H.W.A.P. Emacs Dashboard"))
 
+;; thwap defaults
+(require 'thwap-defaults)
 ;; theme configuration
-
 (require 'thwap-theme)
-
+;; icon configuration
+(require 'thwap-icons)
+;; nerdtree configuration
+(require 'thwap-nerdtree)
 ;; company configuration
-
 (require 'thwap-co)
-
 ;; LSP configuration
-
 (require 'thwap-lsp)
-
+;; projectile configuration
+(require 'thwap-projectile)
+;; magit configuration
+(require 'thwap-magit)
+;; CoPilot configuration
+(require 'thwap-copilot)
 ;; org configuration
-
 (require 'thwap-org)
-
 ;; golang configuration
-
 (require 'thwap-go)
+;; terraform configuration
+(require 'thwap-tf)
+;; python configuration
+(require 'thwap-py)
+;; yaml configuration
+(require 'thwap-yaml)
+;; yasnippet configuration
+(require 'thwap-yas)
+;; dashboard
+(require 'thwap-dash)

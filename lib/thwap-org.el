@@ -36,13 +36,6 @@
       (push file files))
     (nreverse files)))
 
-;; (defun thwap/list-files-with-extension (dir extension)
-;;   "Recursively list all files in DIR with the given EXTENSION."
-;;   (let ((files '()))
-;;     (dolist (file (directory-files-recursively dir (concat "\\." extension "\\'")))
-;;       (push file files))
-;;     files))
-
 (defun thwap/org-agenda-files-update ()
   "Update the org-agenda-files variable."
   (setq org-agenda-files (thwap/list-files-with-extension "~/.org-agenda" "org"))
@@ -60,6 +53,7 @@
 (setq org-log-done 'time
       org-startup-indented t
       org-hide-leading-stars t
+			org-support-shift-select t
       org-directory "~/.org-agenda"
       org-default-notes-file "~/.org-agenda/notes.org")
 
@@ -112,18 +106,28 @@
 
 ;; Org mode stuff
 (define-key thwap-map (kbd "o l") 'org-store-link)
+(add-to-list 'thwap-help-lines "C-c t o l   : Store a link to the current location in the kill ring.")
 (define-key thwap-map (kbd "o C-l") 'org-toggle-link-display)
+(add-to-list 'thwap-help-lines "C-c t o C-l : Toggle the display of links.")
 ;; agenda stuff
 (define-key thwap-map (kbd "o n") 'org-capture)
+(add-to-list 'thwap-help-lines "C-c t o n   : Capture a new task.")
 (define-key thwap-map (kbd "o a") 'org-agenda)
+(add-to-list 'thwap-help-lines "C-c t o a   : Open the Org agenda.")
 (define-key thwap-map (kbd "o t") 'org-todo-list)
+(add-to-list 'thwap-help-lines "C-c t o t   : Open the Org TODO list.")
 ;; time management stuff
 (define-key thwap-map (kbd "o c i") 'org-clock-in)
+(add-to-list 'thwap-help-lines "C-c t o c i : Clock in to the current task.")
 (define-key thwap-map (kbd "o c o") 'org-clock-out)
+(add-to-list 'thwap-help-lines "C-c t o c o : Clock out of the current task.")
 (define-key thwap-map (kbd "o c r") 'org-clock-report)
+(add-to-list 'thwap-help-lines "C-c t o c r : Generate a clock report.")
 ;; refile stuff
 (define-key thwap-map (kbd "o r") 'org-refile)
+(add-to-list 'thwap-help-lines "C-c t o r   : Refile the current task.")
 ;; export stuff
 (define-key thwap-map (kbd "o e") 'org-export-dispatch)
+(add-to-list 'thwap-help-lines "C-c t o e   : Export the current buffer.")
 
 (provide 'thwap-org)
