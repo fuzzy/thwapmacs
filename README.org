@@ -1,0 +1,11 @@
+* T.H.W.A.P. Emacs Configuration
+
+I recently advised someone against rolling their own emacs configuration. Then I did it, because I'm smart like that.
+As it turns out, yeah, I was wrong. The result of rolling my own is a nice fast distribution that is somewhat opinionated.
+
+
+** Help
+
+All keybindings set in this configuration are listed on the dashboard. Any other keybindings set by this configuration
+were the recommended defaults from the package. If a non-default was chosen, it is listed in the help information on
+the dashboar.
