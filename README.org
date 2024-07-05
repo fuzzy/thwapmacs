@@ -3,6 +3,16 @@
 I recently advised someone against rolling their own emacs configuration. Then I did it, because I'm smart like that.
 As it turns out, yeah, I was wrong. The result of rolling my own is a nice fast distribution that is somewhat opinionated.
 
+** Installation
+
+Simply clone this repository as your ~/.emacs.d directory and start emacs.
+
+#+BEGIN_SRC
+$ test -d ~/.emacs.d && mv ~/.emacs.d ~/emacs.d ; git clone https://github.com/fuzzy/thwapmacs ~/.emacs.d
+$ emacs
+#+END_SRC
+
+This configuration bootstraps and uses straight.el to manage all package installations.
 
 ** Help
 
