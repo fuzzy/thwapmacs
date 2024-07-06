@@ -142,6 +142,12 @@
 	:type 'boolean
 	:group 'thwap-config-group)
 
+;; Yaml toggle
+(defcustom thwap-dev-enable-yaml nil
+	"Whether or not to setup Yaml modes."
+	:type 'boolean
+	:group 'thwap-config-group)
+
 ;;
 ;; Org mode settings
 ;;
