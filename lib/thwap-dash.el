@@ -34,9 +34,7 @@
 (setq dashboard-center-content t)
 (setq dashboard-vertically-center-content t)
 (setq dashboard-show-shortcuts t)
-(setq dashboard-items '((recents . 7)
-												(projects . 7)
-												(agenda . 7)))
+(setq dashboard-items '((agenda . 7)))
 (setq dashboard-startupify-list '(dashboard-insert-banner
                                   dashboard-insert-newline
                                   dashboard-insert-banner-title
