@@ -26,10 +26,7 @@
 
 (setq dashboard-banner-logo-title (thwap/dashboard-build-logo-title thwap-help-lines))
 ;; "Welcome to the T.H.W.A.P. Emacs Dashboard")
-(setq dashboard-startup-banner (thwap/random-string-from-list '("~/.emacs.d/lib/logo1.png"
-																																"~/.emacs.d/lib/logo2.png"
-																																"~/.emacs.d/lib/logo3.png"
-																																"~/.emacs.d/lib/logo4.png")))
+(setq dashboard-startup-banner (thwap/random-string-from-list (thwap/list-files-with-extension "~/.emacs.d/lib" "png")))
 (setq initial-buffer-choice (lambda () (get-buffer-create dashboard-buffer-name)))
 (setq dashboard-center-content t)
 (setq dashboard-vertically-center-content t)
