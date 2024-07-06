@@ -1,6 +1,5 @@
 
-;; Set up straight.el to use use-package
-(straight-use-package 'use-package)
+
 
 ;; golden-ratio
 (straight-use-package 'golden-ratio)
