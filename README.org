@@ -18,4 +18,14 @@ This configuration bootstraps and uses straight.el to manage all package install
 
 All keybindings set in this configuration are listed on the dashboard. Any other keybindings set by this configuration
 were the recommended defaults from the package. If a non-default was chosen, it is listed in the help information on
-the dashboar.
+the dashboard.
+
+Additionally, with any custom configuration you may do, if you wish your keybindings to be added to the *thwap-map*,
+you may do so with the provided *thwap/add-key-binding* function, like so:
+
+#+begin_src emacs-lisp
+(thwap/add-key-binding "M-s" 'org-edit-special "Edit the source at this point, in it's native mode")
+#+end_src
+
+This will prefix it with *C-c t* like all other T.H.W.A.P. Emacs commands, but it will also place the help message
+into the dashboard's greeting message as a reminder.
