@@ -40,16 +40,17 @@
 (global-set-key (kbd "C-c t") 'thwap-map)
 
 ;; Add a command to customize the T.H.W.A.P. group
-(define-key thwap-map (kbd "C-c") (lambda () (interactive) (customize-group 'thwap-config-group)))
-(add-to-list 'thwap-help-lines "C-c t C-c   : Customize this T.H.W.A.P. Emacs Installation")
+(thwap/add-key-binding
+ "C-c"
+ (lambda () (interactive) (customize-group 'thwap-config-group))
+ "Customize this T.H.W.A.P. Emacs Installation")
 
 ;; quick commenting/uncommenting of a region is just too useful
-(define-key thwap-map (kbd "c") 'comment-or-uncomment-region)
-(add-to-list 'thwap-help-lines "C-c t c     : Comment or uncomment region")
+(thwap/add-key-binding "c" 'comment-or-uncomment-region "Comment or uncomment region")
 
 ;; eval buffer is also very useful
-(define-key thwap-map (kbd "e b") 'eval-buffer)
-(add-to-list 'thwap-help-lines "C-c t e b   : Eval buffer")
+(thwap/add-key-binding "e b" 'eval-buffer "Eval buffer")
+
 
 
 ;; our provide statement

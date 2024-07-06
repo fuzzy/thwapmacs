@@ -5,7 +5,6 @@
 	(straight-use-package 'lsp-treemacs)
 	(setq gc-cons-threshold 100000000)
 	(setq read-process-output-max (* 1024 1024))
-	(define-key thwap-map (kbd "l") 'lsp-keymap-prefix)
-	(add-to-list 'thwap-help-lines "C-c t l     : lsp-keymap-prefix"))
+	(thwap/add-key-binding "l" 'lsp-keymap-prefix "lsp-keymap-prefix"))
 
 (provide 'thwap-lsp)

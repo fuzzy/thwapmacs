@@ -3,7 +3,6 @@
 	(straight-use-package 'magit)
 	(straight-use-package 'forge)
 	(straight-use-package 'magit-todos)
-	(define-key thwap-map (kbd "g s") 'magit-status)
-	(add-to-list 'thwap-help-lines "C-c t g s   : magit-status"))
+	(thwap/add-key-binding "g s" 'magit-status "Git status (magit entrypoint)"))
 
 (provide 'thwap-magit)

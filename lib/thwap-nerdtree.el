@@ -4,8 +4,7 @@
 		:straight t
 		:config
 		(global-set-key [f8] 'neotree-toggle)
-		(define-key thwap-map (kbd "C-n") 'neotree-toggle)
-		(add-to-list 'thwap-help-lines "C-c t C-n   : Toggle Neotree")))
+		(thwap/add-key-binding "C-n" 'neotree-toggle "Toggle Neotree")))
 
 
 (when (and thwap-fm-enable-treemacs (not thwap-fm-enable-neotree))
@@ -28,8 +27,7 @@
 						treemacs-never-persist nil
 						treemacs-is-never-other-window t
 						treemacs-goto-tag-strategy 'refetch-index)))
-	(define-key thwap-map (kbd "C-n") 'treemacs)
-	(add-to-list 'thwap-help-lines "C-c t C-n   : Toggle Treemacs"))
+	(thwap/add-key-binding "C-n" 'treemacs "Toggle Treemacs"))
 
 (when (and thwap-fm-enable-treemacs thwap-ui-enable-kaolin-themes (not thwap-fm-enable-neotree))
   (kaolin-treemacs-theme))

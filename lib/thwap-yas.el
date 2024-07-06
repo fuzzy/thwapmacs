@@ -14,7 +14,6 @@
 	(yas-global-mode 1))
 
 ;; yasnippet stuff
-(define-key thwap-map (kbd "y n") 'yas-new-snippet)
-(add-to-list 'thwap-help-lines "C-c t y n   : create a new yasnippet")
+(thwap/add-key-binding "y n" 'yas-new-snippet "Create a new yasnippet")
 
 (provide 'thwap-yas)
