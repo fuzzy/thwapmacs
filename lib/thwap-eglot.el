@@ -1,4 +1,4 @@
-(when (or thwap -dev-enable-eglot thwap-dev-enable-lsp)
+(when (or thwap-dev-enable-eglot thwap-dev-enable-lsp)
 	(straight-use-package 'eglot)
 	(require 'eglot))
 
