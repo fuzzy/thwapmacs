@@ -97,19 +97,14 @@
 
 
 ;;
-;; Language server packages
+;; development assistance packages
 ;;
 
 ;; lsp toggle
-(defcustom thwap-comp-enable-lsp nil
+(defcustom thwap-dev-enable-lsp nil
 	"Whether or not to enable lsp."
 	:type 'boolean
 	:group 'thwap-config-group)
-
-
-;;
-;; development assistance packages
-;;
 
 ;; projectile toggle
 (defcustom thwap-dev-enable-projectile nil
@@ -123,6 +118,29 @@
 	:type 'boolean
 	:group 'thwap-config-group)
 
+;; Copilot toggle
+(defcustom thwap-dev-enable-copilot nil
+	"Whether or not to enable copilot."
+	:type 'boolean
+	:group 'thwap-config-group)
+
+;; Go toggle
+(defcustom thwap-dev-enable-go nil
+	"Whether or not to setup Go development modes."
+	:type 'boolean
+	:group 'thwap-config-group)
+
+;; Python toggle
+(defcustom thwap-dev-enable-python nil
+	"Whether or not to setup Python development modes."
+	:type 'boolean
+	:group 'thwap-config-group)
+
+;; Terraform toggle
+(defcustom thwap-dev-enable-terraform nil
+	"Whether or not to setup Terraform development modes."
+	:type 'boolean
+	:group 'thwap-config-group)
 
 ;;
 ;; Org mode settings

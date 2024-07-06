@@ -1,5 +1,5 @@
 
-(when thwap-comp-enable-lsp
+(when thwap-dev-enable-lsp
 	(straight-use-package 'lsp-mode)
 	(straight-use-package 'lsp-ui)
 	(straight-use-package 'lsp-treemacs)
