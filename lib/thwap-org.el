@@ -160,7 +160,7 @@
 						:local-repo "org-ai"
 						:files ("*.el" "README.md" "snippets")))
 	(setq org-ai-default-chat-model "gpt-3.5-turbo")
-	(setq org-ai-openai-api-token thwap-org-ai-openai-api-token)
+	(setq org-ai-openai-api-token thwap-org-openai-api-token)
 	(org-ai-global-mode)
 	(org-ai-install-yasnippets))
 

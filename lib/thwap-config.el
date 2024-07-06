@@ -182,7 +182,7 @@
 	:type 'boolean
 	:group 'thwap-config-group)
 
-(defcustom thwap-org-org-ai-token nil
+(defcustom thwap-org-openai-api-token nil
 	"OpenAI API Token for use in org-ai."
 	:type 'string
 	:group 'thwap-config-group)
