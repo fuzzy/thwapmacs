@@ -177,6 +177,15 @@
 	:type 'boolean
 	:group 'thwap-config-group)
 
+(defcustom thwap-org-enable-org-ai nil
+	"Whether or not to enable org-ai."
+	:type 'boolean
+	:group 'thwap-config-group)
+
+(defcustom thwap-org-org-ai-token nil
+	"OpenAI API Token for use in org-ai."
+	:type 'string
+	:group 'thwap-config-group)
 
 ;;
 ;; Example usage

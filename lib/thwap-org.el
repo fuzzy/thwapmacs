@@ -153,6 +153,16 @@
 (when (and thwap-org-enable-org thwap-org-enable-org-transclusion)
 	(straight-use-package 'org-transclusion))
 
+;; org-ai
+(when (and thwap-org-enable-org thwap-org-enable-org-ai)
+	(straight-use-package
+	 '(org-ai :type git :host github :repo "rksm/org-ai"
+						:local-repo "org-ai"
+						:files ("*.el" "README.md" "snippets")))
+	(setq org-ai-default-chat-model "gpt-3.5-turbo")
+	(setq org-ai-openai-api-token thwap-org-ai-openai-api-token)
+	(org-ai-global-mode)
+	(org-ai-install-yasnippets))
 
 ;;
 ;; Org mode configuration
