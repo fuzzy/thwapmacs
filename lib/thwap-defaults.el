@@ -42,7 +42,7 @@
 ;; Add a command to customize the T.H.W.A.P. group
 (thwap/add-key-binding
  "C-c"
- (lambda () (interactive) (customize-group 'thwap-config-group))
+ (lambda () (interactive) (customize-group 'thwap-config))
  "Customize this T.H.W.A.P. Emacs Installation")
 
 ;; quick commenting/uncommenting of a region is just too useful

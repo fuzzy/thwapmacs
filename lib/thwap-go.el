@@ -1,7 +1,6 @@
 
 (when thwap-dev-enable-go
 	(straight-use-package 'go-mode)
-	(straight-use-package 'eglot)
 	(setq lsp-go-analyses '((shadow . t)
 													(simplifycompositelit . :json-false)))
 	(when (executable-find "gopls")
