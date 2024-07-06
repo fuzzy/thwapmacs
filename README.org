@@ -3,13 +3,19 @@
 I recently advised someone against rolling their own emacs configuration. Then I did it, because I'm smart like that.
 As it turns out, yeah, I was wrong. The result of rolling my own is a nice fast distribution that is somewhat opinionated.
 
+No doubt I've been helped along that journey by much reading and worthy YouTube Emacs content. And in that spirit I am
+publishing this configuration, and endeavoring to ensure that it is well commented and documented. If you have questions,
+concerns, or suggestions, feel free to start a discussion by opening an issue. If you have suggestions, and can't be asked
+to interact with someone, I get it, feel free to send a PR and we can communicate through code if that works for you.
+
 ** Installation
 
 Simply clone this repository as your ~/.emacs.d directory and start emacs.
 
 #+BEGIN_SRC
-$ test -d ~/.emacs.d && mv ~/.emacs.d ~/emacs.d ; git clone https://github.com/fuzzy/thwapmacs ~/.emacs.d
-$ emacs
+$ test -d ~/.emacs.d && mv ~/.emacs.d ~/emacs.d
+$ git clone https://github.com/fuzzy/thwapmacs ~/.emacs.d
+$ emacs # start up emacs in the normal way and let it bootstrap
 #+END_SRC
 
 This configuration bootstraps and uses straight.el to manage all package installations.
@@ -20,12 +26,33 @@ All keybindings set in this configuration are listed on the dashboard. Any other
 were the recommended defaults from the package. If a non-default was chosen, it is listed in the help information on
 the dashboard.
 
-Additionally, with any custom configuration you may do, if you wish your keybindings to be added to the *thwap-map*,
-you may do so with the provided *thwap/add-key-binding* function, like so:
+Additionally, with any custom configuration you may do, if you wish your keybindings to be added to the _thwap-map_,
+you may do so with the provided _thwap/add-key-binding_ function, like so:
 
 #+begin_src emacs-lisp
-(thwap/add-key-binding "M-s" 'org-edit-special "Edit the source at this point, in it's native mode")
+(thwap/add-key-binding
+  "M-s"
+  'org-edit-special
+  "Edit the source at this point, in it's native mode")
 #+end_src
 
-This will prefix it with *C-c t* like all other T.H.W.A.P. Emacs commands, but it will also place the help message
+This will prefix it with _C-c t_ like all other T.H.W.A.P. Emacs commands, but it will also place the help message
 into the dashboard's greeting message as a reminder.
+
+** Features
+
+T.H.W.A.P. Emacs (or thwapmacs) is configured to be minimal out of the box, however has rich support for many different
+packages. All of these are off by default with *VERY* few exceptions. Below you will find a list of all the optional
+packages that are natively supported. Further, we'll go over how you can add your own configuration options and take
+advantage of the configuration interface.
+
+*** Non-Optional packages
+
+1. [[https://github.com/radian-software/straight.el][straight.el]]     - straight works with use-package to fetch and setup local installations.
+2. [[https://github.com/jwiegley/use-package][use-package]]     - use-package is a fantastic package management system for local installs.
+3. [[https://github.com/roman/golden-ratio.el][golden-ratio.el]] - Window size management for split buffers. Quite handy.
+4. [[https://github.com/emacs-dashboard/emacs-dashboard][emacs-dashboard]] - A nice handy startup screen, filled with fun facts and stuff.
+5. [[https://github.com/joaotavora/yasnippet][yasnippet]]       - A handy snippet/macro system for commonly used bits.
+
+*** Optional packages
+
