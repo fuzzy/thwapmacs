@@ -125,7 +125,7 @@
 	:group 'thwap-config)
 
 ;; Eglot toggle
-(defcustom thwap-dev-enable-eglot t
+(defcustom thwap-dev-enable-eglot nil
 	"Whether or not to setup Eglot."
 	:type 'boolean
 	:group 'thwap-config)

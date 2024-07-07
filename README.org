@@ -20,6 +20,15 @@ $ emacs # start up emacs in the normal way and let it bootstrap
 
 This configuration bootstraps and uses straight.el to manage all package installations.
 
+Once you get emacs started, you will quickly find, that it is nearly as minimal as it can be. straight.el and use-package
+will have been bootstrapped, along with golden-ratio. There is a handy note in the keybindings listed on the dashboard
+telling you which keys to press, in order to get to the customization group. From there, you can enable and configure
+all of the avaiable layers of support. That keybinding for reference, is _C-c t C-c_.
+
+#+CAPTION: An example of the configuration options, in console mode
+#+NAME: config
+[[./config.png]]
+
 ** Help
 
 All keybindings set in this configuration are listed on the dashboard. Any other keybindings set by this configuration

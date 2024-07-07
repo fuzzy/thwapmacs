@@ -27,9 +27,11 @@
 ;; nerdtree configuration
 (require 'thwap-nerdtree)
 ;; company configuration
-(require 'thwap-co)
+(require 'thwap-comp)
 ;; LSP configuration
 (require 'thwap-lsp)
+;; Eglot configuration
+(require 'thwap-eglot)
 ;; projectile configuration
 (require 'thwap-projectile)
 ;; magit configuration
