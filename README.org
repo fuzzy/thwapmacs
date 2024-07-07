@@ -1,7 +1,9 @@
+#+BEGIN_CENTER
 #+CAPTION: ThwapMacs: T.H.W.A.P. GNU Emacs Configuration
 #+NAME: logo
-#+ATT_HTML: :align center :width 100%
+#+ATTR_HTML: :align center
 [[./logos/logo3.png]]
+#+END_CENTER
 
 * T.H.W.A.P. Emacs Configuration
 
