@@ -1,3 +1,8 @@
+#+CAPTION: ThwapMacs: T.H.W.A.P. GNU Emacs Configuration
+#+NAME: logo
+#+ATT_HTML: :align center :width 100%
+[[./logos/logo3.png]]
+
 * T.H.W.A.P. Emacs Configuration
 
 I recently advised someone against rolling their own emacs configuration. Then I did it, because I'm smart like that.
@@ -62,7 +67,7 @@ advantage of the configuration interface.
 3. [[https://github.com/roman/golden-ratio.el][golden-ratio.el]] - Window size management for split buffers. Quite handy.
 4. [[https://github.com/emacs-dashboard/emacs-dashboard][emacs-dashboard]] - A nice handy startup screen, filled with fun facts and stuff.
 5. [[https://github.com/joaotavora/yasnippet][yasnippet]]       - A handy snippet/macro system for commonly used bits.
-6. [[https://github.com/joaotavora/eglot][eglot]]           - Emacs Polyglot LSP library (seems like everything uses this).
 
 *** Optional packages
 
+1. [[https://github.com/joaotavora/eglot][eglot]]           - Emacs Polyglot LSP library (seems like everything uses this).
