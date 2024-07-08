@@ -32,9 +32,12 @@ will have been bootstrapped, along with golden-ratio. There is a handy note in t
 telling you which keys to press, in order to get to the customization group. From there, you can enable and configure
 all of the avaiable layers of support. That keybinding for reference, is _C-c t C-c_.
 
+#+BEGIN_CENTER
 #+CAPTION: An example of the configuration options, in console mode
 #+NAME: config
+#+ATTR_HTML: :align center 
 [[./config.png]]
+#+END_CENTER
 
 ** Help
 
