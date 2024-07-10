@@ -33,6 +33,7 @@ LST is reversed and concatenated into a single string with line breaks."
 (defun thwap/ensure-directory-exists (dir)
   "Ensure the directory DIR exists. If not, create it."
   (unless (file-directory-p dir)
+		(message "Creating missing directory: %s" dir)
     (make-directory dir t)))
 
 ;; Function to list all files in a directory with a given extension

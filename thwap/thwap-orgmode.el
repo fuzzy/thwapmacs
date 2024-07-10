@@ -35,6 +35,7 @@
 ;; base
 (when (memq 'orgmode thwap-orgmode)
 	(straight-use-package 'org)
+	(thwap/ensure-directory-exists "~/.org-agenda")
 	(setq browse-url-browser-function 'browse-url-generic
 				browse-url-generic-program "firefox-esr"
 				org-log-done 'time
