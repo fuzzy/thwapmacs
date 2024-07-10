@@ -32,29 +32,34 @@
 
 (when (memq 'modusthemes thwap-ui-themes)
 	(straight-use-package 'modus-themes)
-	(require 'modus-themes))
+	(require 'modus-themes)
+	(message "Modus themes loaded."))
 
 (when (memq 'doomthemes thwap-ui-themes)
 	(straight-use-package 'doom-themes)
-	(require 'doom-themes))
+	(require 'doom-themes)
+	(message "Doom themes loaded."))
 
 (when (memq 'sublimethemes thwap-ui-themes)
 	(straight-use-package 'sublime-themes)
-	(require 'sublime-themes))
+	(require 'sublime-themes)
+	(message "Sublime themes loaded."))
 
 (when (memq 'kaolinthemes thwap-ui-themes)
 	(straight-use-package 'kaolin-themes)
-	(require 'kaolin-themes))
+	(require 'kaolin-themes)
+	(message "Kaolin themes loaded."))
 
 (when (memq 'alectthems thwap-ui-themes)
 	(straight-use-package 'alect-themes)
-	(require 'alect-themes))
+	(require 'alect-themes)
+	(message "Alect themes loaded."))
 
 ;; load the theme specified in the config
 ;; if things look wonky, you probably either need to install the
 ;; theme or you need to check your spelling.
 (load-theme thwap-ui-theme :no-confirm)
-
+(message "Theme loaded: %s" thwap-ui-theme)
 
 ;; icon bits
 
@@ -68,7 +73,8 @@
 		:straight t
 		:defer
 		:init
-		(all-the-icons-completion-mode 1)))
+		(all-the-icons-completion-mode 1))
+	(message "All-the-icons loaded."))
 
 (when (and (eq 'nerdicons thwap-ui-icons) (not (eq 'alltheicons thwap-ui-icons)))
 	(use-package nerd-icons
@@ -82,7 +88,8 @@
 		;; "Symbols Nerd Font Mono" is the default and is recommended
 		;; but you can use any other Nerd Font if you want
 		(nerd-icons-font-family "Symbols Nerd Font Mono")
-		))
+		)
+	(message "Nerd-icons loaded."))
 
 (when (and (eq 'nerdicons thwap-ui-icons) (eq 'alltheicons thwap-ui-icons))
 	(message "Both all-the-icons and nerd-icons are enabled. Disabling nerd-icons.")
@@ -95,6 +102,9 @@
 		:straight t
 		:defer
 		:init
-		(all-the-icons-completion-mode 1)))
+		(all-the-icons-completion-mode 1))
+	(message "All-the-icons loaded."))
 
+
+(message "T.H.W.A.P. Interface settings loaded.")
 (provide 'thwap-interface)

@@ -21,5 +21,6 @@
                                   dashboard-insert-newline
                                   dashboard-insert-footer))
 
+(message "T.H.W.A.P. Dashboard loaded")
 (provide 'thwap-dashboard)
 ;;; thwap-dashboard.el ends here

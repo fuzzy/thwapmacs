@@ -65,6 +65,6 @@
 ;; yasnippet stuff
 (thwap/add-key-binding "y n" 'yas-new-snippet "Create a new yasnippet")
 
-
+(message "T.H.W.A.P. Defaults Loaded")
 ;; our provide statement
 (provide 'thwap-defaults)

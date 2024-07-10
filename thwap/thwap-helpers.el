@@ -65,5 +65,6 @@ all `.org` files in the `~/.org-agenda` directory, and sets
   (setq org-timeblock-inbox-file "~/.org-agenda/tasks.org"))
 
 
+(message "T.H.W.A.P. Loaded helper function library.")
 (provide 'thwap-helpers)
 ;;; thwap-helpers.el ends here

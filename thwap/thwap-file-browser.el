@@ -20,7 +20,8 @@
 		:straight t
 		:config
 		(global-set-key [f8] 'neotree-toggle)
-		(thwap/add-key-binding "C-n" 'neotree-toggle "Toggle Neotree")))
+		(thwap/add-key-binding "C-n" 'neotree-toggle "Toggle Neotree"))
+	(message "neotree loaded"))
 
 
 (when (eq 'treemacs thwap-dirbrowser)
@@ -45,6 +46,8 @@
 						treemacs-goto-tag-strategy 'refetch-index)))
 	(thwap/add-key-binding "C-t" 'treemacs "Toggle Treemacs")
 	(when (memq 'kaolinthemes thwap-ui-themes)
-		(kaolin-treemacs-theme)))
+		(kaolin-treemacs-theme))
+	(message "treemacs loaded"))
 
+(message "T.H.W.A.P. Directory browser configuration loaded.")
 (provide 'thwap-file-browser)
