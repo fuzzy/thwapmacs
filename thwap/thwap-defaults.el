@@ -28,7 +28,7 @@
 (straight-use-package 'golden-ratio)
 (golden-ratio-mode 1)
 (setq golden-ratio-auto-scale t)
-
+(message "Golden Ratio Mode Enabled")
 
 ;;
 ;; Set up the T.H.W.A.P. keybindings
@@ -54,11 +54,13 @@
 (straight-use-package 'yasnippet)
 (require 'yasnippet)
 (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(message "Yasnippet loaded")
 
 (straight-use-package 'yasnippet-snippets)
 (require 'yasnippet-snippets)
 (yas-reload-all)
 (yas-global-mode 1)
+(message "Yasnippet-Snippets loaded")
 
 ;; yasnippet stuff
 (thwap/add-key-binding "y n" 'yas-new-snippet "Create a new yasnippet")

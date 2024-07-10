@@ -84,29 +84,35 @@
 	(thwap/add-key-binding "o c o" 'org-clock-out "Clock out of the current task.")
 	(thwap/add-key-binding "o c r" 'org-clock-report "Generate a clock report.")
 	(thwap/add-key-binding "o r" 'org-refile "Refile the current task.")
-	(thwap/add-key-binding "o e" 'org-export-dispatch "Export the current buffer."))
+	(thwap/add-key-binding "o e" 'org-export-dispatch "Export the current buffer.")
+	(message "org-mode loaded"))
 
 ;; org-bullets
 (when (and (memq 'orgmode thwap-orgmode) (memq 'orgbullets thwap-orgmode))
 	(straight-use-package 'org-bullets)
-	(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+	(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+	(message "org-bullets loaded"))
 
 ;; org-super-agenda
 (when (and (memq 'orgmode thwap-orgmode) (memq 'orgsuperagenda thwap-orgmode))
 	(straight-use-package 'org-super-agenda)
-	(add-hook 'org-agenda-mode-hook 'org-super-agenda-mode))
+	(add-hook 'org-agenda-mode-hook 'org-super-agenda-mode)
+	(message "org-super-agenda loaded"))
 
 ;; org-modern
 (when (and (memq 'orgmode thwap-orgmode) (memq 'orgmodern thwap-orgmode))
-	(straight-use-package 'org-modern))
+	(straight-use-package 'org-modern)
+	(message "org-modern loaded"))
 
 ;; org-timeblock
 (when (and (memq 'orgmode thwap-orgmode) (memq 'orgtimeblock thwap-orgmode))
-	(straight-use-package 'org-timeblock))
+	(straight-use-package 'org-timeblock)
+	(message "org-timeblock loaded"))
 
 ;; org-download
 (when (and (memq 'orgmode thwap-orgmode) (memq 'orgdownload thwap-orgmode))
-	(add-hook 'dired-mode-hook 'org-download-enable))
+	(add-hook 'dired-mode-hook 'org-download-enable)
+	(message "org-download loaded"))
 
 ;; org-roam
 ;; (when (and thwap-org-enable-org thwap-org-enable-org-roam)
@@ -130,13 +136,15 @@
 
 ;; org-transclusion
 (when (and (memq 'orgmode thwap-orgmode) (memq 'orgtransclusion thwap-orgmode))
-	(straight-use-package 'org-transclusion))
+	(straight-use-package 'org-transclusion)
+	(message "org-transclusion loaded"))
 
 ;; ob-mermaid
 (when (and (memq 'orgmode thwap-orgmode) (memq 'obmermaid thwap-orgbabel))
 	(straight-use-package 'ob-mermaid)
 	(add-to-list 'org-src-lang-modes '("mermaid" . mermaid))
-	(add-to-list 'org-babel-load-languages '(mermaid . t)))
+	(add-to-list 'org-babel-load-languages '(mermaid . t))
+	(message "ob-mermaid loaded"))
 
 ;; org-ai
 (when (and (memq 'orgmode thwap-orgmode) thwap-org-openai-api-token)
@@ -147,8 +155,10 @@
 	(setq org-ai-default-chat-model "gpt-3.5-turbo")
 	(setq org-ai-openai-api-token thwap-org-openai-api-token)
 	(org-ai-global-mode)
-	(org-ai-install-yasnippets))
+	(org-ai-install-yasnippets)
+	(message "org-ai loaded"))
 
 
+(message "T.H.W.A.P. Org-Mode settings loaded")
 (provide 'thwap-orgmode)
 ;; thwap-orgmode.el ends here
