@@ -1,7 +1,12 @@
 *~
-straight*
+*.elc
 scratch
 recentf
 .cache*
 .lsp*
+straight*
 transient*
+bookmarks*
+history*
+tramp*
+var*
