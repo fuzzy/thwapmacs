@@ -3,7 +3,7 @@
 ;;
 
 ;; Add the lib directory to the load path
-(add-to-list 'load-path (expand-file-name "lib" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "thwap" user-emacs-directory))
 
 ;; Add the thwap.d directory to the load path
 (add-to-list 'load-path (expand-file-name "thwap.d" user-emacs-directory))

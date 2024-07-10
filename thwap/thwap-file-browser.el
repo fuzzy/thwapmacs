@@ -1,5 +1,21 @@
 
-(when (and thwap-fm-enable-neotree (not thwap-fm-enable-treemacs))
+;;
+;; Tree browser packages
+;;
+
+(defcustom thwap-dirbrowser nil
+	"Whether or not to enable treemacs."
+	:type '(choice (const :tag "None" nil)
+								 (const :tag "neotree" neotree)
+								 (const :tag "treemacs" treemacs))
+	:group 'thwap-config)
+
+
+;;
+;; File Tree Browser
+;;
+
+(when (eq 'neotree thwap-dirbrowser)
 	(use-package neotree
 		:straight t
 		:config
@@ -7,7 +23,7 @@
 		(thwap/add-key-binding "C-n" 'neotree-toggle "Toggle Neotree")))
 
 
-(when (and thwap-fm-enable-treemacs (not thwap-fm-enable-neotree))
+(when (eq 'treemacs thwap-dirbrowser)
 	(use-package treemacs
 		:straight t
 		:ensure t
@@ -27,9 +43,8 @@
 						treemacs-never-persist nil
 						treemacs-is-never-other-window t
 						treemacs-goto-tag-strategy 'refetch-index)))
-	(thwap/add-key-binding "C-n" 'treemacs "Toggle Treemacs"))
+	(thwap/add-key-binding "C-t" 'treemacs "Toggle Treemacs")
+	(when (memq 'kaolinthemes thwap-ui-themes)
+		(kaolin-treemacs-theme)))
 
-(when (and thwap-fm-enable-treemacs thwap-ui-enable-kaolin-themes (not thwap-fm-enable-neotree))
-  (kaolin-treemacs-theme))
-
-(provide 'thwap-nerdtree)
+(provide 'thwap-file-browser)

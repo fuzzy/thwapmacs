@@ -1,34 +1,39 @@
 ;;
-;; Helper functions
+;; Org mode settings
 ;;
 
-;; Function to get a unique filename for Org-capture
-(defun thwap/org-capture-get-unique-filename ()
-  "Generate a unique filename for Org-capture."
-  (let ((filename (format "~/.org-agenda/syncup__issue__%s.org" (format-time-string "%Y%m%d%H%M%S"))))
-    (message "Inside function: Generated filename: %s" filename)
-    filename))
+;; org layer toggles
+(defcustom thwap-orgmode nil
+	"Choose from the available org-mode packages"
+	:type '(set (const :tag "None" nil)
+							(const :tag "Org" orgmode)
+							(const :tag "Org-Bullets" orgbullets)
+							(const :tag "Org-SuperAgenda" orgsuperagenda)
+							(const :tag "Org-Modern" orgmodern)
+							(const :tag "Org-TimeBlock" orgtimeblock)
+							(const :tag "Org-Download" orgdownload)
+							(const :tag "Org-Transclusion" orgtransclusion))
+	:group 'thwap-config)
 
-(defun thwap/list-files-with-extension (dir extension)
-  "Recursively list all files in DIR with the given EXTENSION, suitable for org-agenda-files."
-  (let ((files '()))
-    (dolist (file (directory-files-recursively dir (concat "\\." extension "\\'")))
-      (push file files))
-    (nreverse files)))
+;; org-babel extras
+(defcustom thwap-orgbabel nil
+	"Choose extra packages for org-babel"
+	:type '(set (const :tag "None" nil)
+							(const :tag "ob-mermaid" obmermaid)
+							(const :tag "ob-napkin" obnapkin))
+	:group 'thwap-config)
 
-(defun thwap/org-agenda-files-update ()
-  "Update the org-agenda-files variable."
-  (setq org-agenda-files (thwap/list-files-with-extension "~/.org-agenda" "org"))
-  (setq org-timeblock-files (thwap/list-files-with-extension "~/.org-agenda" "org"))
-  (setq org-timeblock-inbox-file "~/.org-agenda/tasks.org"))
-
+(defcustom thwap-org-openai-api-token nil
+	"OpenAI API Token for use in org-ai. (Setting this enables the org-ai support.)"
+	:type 'string
+	:group 'thwap-config)
 
 ;;
 ;; Ensure Org mode is installed and loaded
 ;;
 
 ;; base
-(when thwap-org-enable-org
+(when (memq 'orgmode thwap-orgmode)
 	(straight-use-package 'org)
 	(setq browse-url-browser-function 'browse-url-generic
 				browse-url-generic-program "firefox-esr"
@@ -82,59 +87,59 @@
 	(thwap/add-key-binding "o e" 'org-export-dispatch "Export the current buffer."))
 
 ;; org-bullets
-(when (and thwap-org-enable-org thwap-org-enable-org-bullets)
+(when (and (memq 'orgmode thwap-orgmode) (memq 'orgbullets thwap-orgmode))
 	(straight-use-package 'org-bullets)
 	(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 ;; org-super-agenda
-(when (and thwap-org-enable-org thwap-org-enable-org-super-agenda)
+(when (and (memq 'orgmode thwap-orgmode) (memq 'orgsuperagenda thwap-orgmode))
 	(straight-use-package 'org-super-agenda)
 	(add-hook 'org-agenda-mode-hook 'org-super-agenda-mode))
 
 ;; org-modern
-(when (and thwap-org-enable-org thwap-org-enable-org-modern)
+(when (and (memq 'orgmode thwap-orgmode) (memq 'orgmodern thwap-orgmode))
 	(straight-use-package 'org-modern))
 
 ;; org-timeblock
-(when (and thwap-org-enable-org thwap-org-enable-org-timeblock)
+(when (and (memq 'orgmode thwap-orgmode) (memq 'orgtimeblock thwap-orgmode))
 	(straight-use-package 'org-timeblock))
 
 ;; org-download
-(when (and thwap-org-enable-org thwap-org-enable-org-download)
+(when (and (memq 'orgmode thwap-orgmode) (memq 'orgdownload thwap-orgmode))
 	(add-hook 'dired-mode-hook 'org-download-enable))
 
+;; org-roam
+;; (when (and thwap-org-enable-org thwap-org-enable-org-roam)
+;; 	(setq org-roam-directory "~/.org-agenda")
+;; 	(setq org-roam-db-location "~/.org-agenda/org-roam.db")
+;; 	(setq org-roam-completion-everywhere t)
+;; 	(setq org-roam-capture-templates
+;; 				'(("d" "default" plain "%?"
+;; 					 :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+;; 					 :unnarrowed t)))
+;; 	(add-hook 'after-init-hook 'org-roam-mode)
+;; 	(add-hook 'org-mode-hook 'org-roam-mode)
+;; 	(add-hook 'org-mode-hook 'org-roam-ui-mode))
+
+;; ;; org-roam-ui
+;; (when (and thwap-org-enable-org thwap-org-enable-org-roam thwap-org-enable-org-roam-ui)
+;; 	(straight-use-package 'org-roam-ui)
+;; 	(setq org-roam-ui-sync-theme t)
+;; 	(setq org-roam-ui-follow t)
+;; 	(setq org-roam-ui-update-on-save t))
+
+;; org-transclusion
+(when (and (memq 'orgmode thwap-orgmode) (memq 'orgtransclusion thwap-orgmode))
+	(straight-use-package 'org-transclusion))
+
 ;; ob-mermaid
-(when (and thwap-org-enable-org thwap-org-enable-ob-mermaid)
+(when (and (memq 'orgmode thwap-orgmode) (memq 'obmermaid thwap-orgbabel))
 	(straight-use-package 'ob-mermaid)
 	(add-to-list 'org-src-lang-modes '("mermaid" . mermaid))
 	(add-to-list 'org-babel-load-languages '(mermaid . t)))
 
-;; org-roam
-(when (and thwap-org-enable-org thwap-org-enable-org-roam)
-	(setq org-roam-directory "~/.org-agenda")
-	(setq org-roam-db-location "~/.org-agenda/org-roam.db")
-	(setq org-roam-completion-everywhere t)
-	(setq org-roam-capture-templates
-				'(("d" "default" plain "%?"
-					 :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-					 :unnarrowed t)))
-	(add-hook 'after-init-hook 'org-roam-mode)
-	(add-hook 'org-mode-hook 'org-roam-mode)
-	(add-hook 'org-mode-hook 'org-roam-ui-mode))
-
-;; org-roam-ui
-(when (and thwap-org-enable-org thwap-org-enable-org-roam thwap-org-enable-org-roam-ui)
-	(straight-use-package 'org-roam-ui)
-	(setq org-roam-ui-sync-theme t)
-	(setq org-roam-ui-follow t)
-	(setq org-roam-ui-update-on-save t))
-
-;; org-transclusion
-(when (and thwap-org-enable-org thwap-org-enable-org-transclusion)
-	(straight-use-package 'org-transclusion))
-
 ;; org-ai
-(when (and thwap-org-enable-org thwap-org-enable-org-ai)
+(when (and (memq 'orgmode thwap-orgmode) thwap-org-openai-api-token)
 	(straight-use-package
 	 '(org-ai :type git :host github :repo "rksm/org-ai"
 						:local-repo "org-ai"
@@ -144,9 +149,6 @@
 	(org-ai-global-mode)
 	(org-ai-install-yasnippets))
 
-;;
-;; Org mode configuration
-;;
 
-
-(provide 'thwap-org)
+(provide 'thwap-orgmode)
+;; thwap-orgmode.el ends here

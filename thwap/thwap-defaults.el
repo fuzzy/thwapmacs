@@ -51,6 +51,17 @@
 ;; eval buffer is also very useful
 (thwap/add-key-binding "e b" 'eval-buffer "Eval buffer")
 
+(straight-use-package 'yasnippet)
+(require 'yasnippet)
+(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+
+(straight-use-package 'yasnippet-snippets)
+(require 'yasnippet-snippets)
+(yas-reload-all)
+(yas-global-mode 1)
+
+;; yasnippet stuff
+(thwap/add-key-binding "y n" 'yas-new-snippet "Create a new yasnippet")
 
 
 ;; our provide statement

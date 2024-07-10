@@ -4,14 +4,14 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(xterm-mouse-mode t)
  '(mouse-autoselect-window t)
  '(mouse-drag-and-drop-region t)
  '(mouse-drag-and-drop-region-cross-program t)
  '(terraform-format-on-save t)
  '(terraform-indent-level 2)
  '(tool-bar-mode nil)
- '(visible-bell 1))
+ '(visible-bell 1)
+ '(xterm-mouse-mode t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -20,39 +20,21 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Noto Sans Mono" :foundry "GOOG" :slant normal :weight regular :height 90 :width normal)))))
 
+;; thwap helpers
+(require 'thwap-helpers)
 ;; thwap config
-(require 'thwap-config)
+(require 'thwap-configuration)
 ;; thwap defaults
 (require 'thwap-defaults)
 ;; theme configuration
-(require 'thwap-theme)
-;; icon configuration
-(require 'thwap-icons)
-;; nerdtree configuration
-(require 'thwap-nerdtree)
+(require 'thwap-interface)
+;; file browser configuration
+(require 'thwap-file-browser)
 ;; company configuration
-(require 'thwap-comp)
-;; LSP configuration
-(require 'thwap-lsp)
-;; Eglot configuration
-(require 'thwap-eglot)
-;; projectile configuration
-(require 'thwap-projectile)
-;; magit configuration
-(require 'thwap-magit)
-;; CoPilot configuration
-(require 'thwap-copilot)
+(require 'thwap-completion)
+;; development configuration
+(require 'thwap-development)
 ;; org configuration
-(require 'thwap-org)
-;; golang configuration
-(require 'thwap-go)
-;; terraform configuration
-(require 'thwap-tf)
-;; python configuration
-(require 'thwap-py)
-;; yaml configuration
-(require 'thwap-yaml)
-;; yasnippet configuration
-(require 'thwap-yas)
+(require 'thwap-orgmode)
 ;; dashboard
-(require 'thwap-dash)
+(require 'thwap-dashboard)

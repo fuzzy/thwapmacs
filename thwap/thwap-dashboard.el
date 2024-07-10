@@ -1,26 +1,3 @@
-;;
-;; Helper functions for the dashboard
-;;
-
-(defun thwap/dashboard-insert-logo-title (banner)
-	"Insert BANNER into the dashboard buffer."
-	(insert "\n")
-	;; if banner is a single string, display it in the center
-	;; else if it is a list of strings, display them with line breaks
-	(if (stringp banner)
-			(insert (propertize banner 'face 'dashboard-banner-logo-title))
-		(dolist (line banner)
-			(insert (propertize line 'face 'dashboard-banner-logo-title))
-			(insert "\n"))))
-
-(defun thwap/dashboard-build-logo-title (lst)
-	"Build a list of strings from LST to display as the banner."
-	(mapconcat 'identity (reverse lst) "\n"))
-
-(defun thwap/random-string-from-list (strings)
-  (let ((index (random (length strings))))
-    (nth index strings)))
-
 (straight-use-package 'dashboard)
 (dashboard-setup-startup-hook)
 
@@ -31,7 +8,8 @@
 (setq dashboard-center-content t)
 (setq dashboard-vertically-center-content t)
 (setq dashboard-show-shortcuts t)
-(setq dashboard-items '((recents . 10)))
+(setq dashboard-items '((recents . 5)
+												(agenda . 5)))
 (setq dashboard-startupify-list '(dashboard-insert-banner
                                   dashboard-insert-newline
                                   dashboard-insert-banner-title
@@ -43,4 +21,5 @@
                                   dashboard-insert-newline
                                   dashboard-insert-footer))
 
-(provide 'thwap-dash)
+(provide 'thwap-dashboard)
+;;; thwap-dashboard.el ends here
