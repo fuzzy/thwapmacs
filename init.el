@@ -38,3 +38,8 @@
 (require 'thwap-orgmode)
 ;; dashboard
 (require 'thwap-dashboard)
+
+;; now that everything is loaded, let's load all the user configurations
+(let ((user-config (thwap/list-files-with-extension "~/.emacs.d/thwap.d" "el")))
+	(dolist (config user-config)
+		(load-file config)))
