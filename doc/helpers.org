@@ -1,0 +1,132 @@
+* THWAP Emacs Helper Functions
+
+This document provides an overview and documentation of various helper functions used in the THWAP Emacs configuration.
+
+** Dashboard Helper Functions
+
+*** thwap/dashboard-insert-logo-title
+#+BEGIN_SRC emacs-lisp
+(defun thwap/dashboard-insert-logo-title (banner)
+  "Insert BANNER into the dashboard buffer.
+BANNER can be a single string, which will be centered, or a list of strings,
+which will be displayed with line breaks between them."
+  (insert "\n")
+  (if (stringp banner)
+      (insert (propertize banner 'face 'dashboard-banner-logo-title))
+    (dolist (line banner)
+      (insert (propertize line 'face 'dashboard-banner-logo-title))
+      (insert "\n"))))
+#+END_SRC
+
+This function inserts a banner into the dashboard buffer. If `banner` is a single string, it is displayed in the center. If it is a list of strings, they are displayed with line breaks.
+
+Example usage:
+#+BEGIN_SRC emacs-lisp
+(thwap/dashboard-insert-logo-title "Welcome to Emacs")
+(thwap/dashboard-insert-logo-title '("Welcome to Emacs" "Have a great day!"))
+#+END_SRC
+
+*** thwap/dashboard-build-logo-title
+#+BEGIN_SRC emacs-lisp
+(defun thwap/dashboard-build-logo-title (lst)
+  "Build a list of strings from LST to display as the banner.
+LST is reversed and concatenated into a single string with line breaks."
+  (mapconcat 'identity (reverse lst) "\n"))
+#+END_SRC
+
+This function builds a list of strings from `lst` to display as the banner by reversing `lst` and concatenating it into a single string with line breaks.
+
+Example usage:
+#+BEGIN_SRC emacs-lisp
+(thwap/dashboard-build-logo-title '("Line 1" "Line 2" "Line 3"))
+;; Output: "Line 3\nLine 2\nLine 1"
+#+END_SRC
+
+*** thwap/random-string-from-list
+#+BEGIN_SRC emacs-lisp
+(defun thwap/random-string-from-list (strings)
+  "Return a random string from STRINGS."
+  (let ((index (random (length strings))))
+    (nth index strings)))
+#+END_SRC
+
+This function returns a random string from the list `strings`.
+
+Example usage:
+#+BEGIN_SRC emacs-lisp
+(thwap/random-string-from-list '("Option 1" "Option 2" "Option 3"))
+#+END_SRC
+
+** General Helper Functions
+
+*** thwap/ensure-directory-exists
+#+BEGIN_SRC emacs-lisp
+(defun thwap/ensure-directory-exists (dir)
+  "Ensure the directory DIR exists. If not, create it."
+  (unless (file-directory-p dir)
+    (make-directory dir t)))
+#+END_SRC
+
+This function ensures that the directory `dir` exists, creating it if necessary.
+
+Example usage:
+#+BEGIN_SRC emacs-lisp
+(thwap/ensure-directory-exists "~/my/new/directory")
+#+END_SRC
+
+*** thwap/list-files-with-extension
+#+BEGIN_SRC emacs-lisp
+(defun thwap/list-files-with-extension (dir extension)
+  "Recursively list all files in DIR with the given EXTENSION.
+This function is suitable for setting `org-agenda-files`."
+  (let ((files '()))
+    (dolist (file (directory-files-recursively dir (concat "\\." extension "\\'")))
+      (push file files))
+    (nreverse files)))
+#+END_SRC
+
+This function recursively lists all files in `dir` with the given `extension`, suitable for use with `org-agenda-files`.
+
+Example usage:
+#+BEGIN_SRC emacs-lisp
+(thwap/list-files-with-extension "~/my/org-files" "org")
+#+END_SRC
+
+** Org Mode Helper Functions
+
+*** thwap/org-capture-get-unique-filename
+#+BEGIN_SRC emacs-lisp
+(defun thwap/org-capture-get-unique-filename ()
+  "Generate a unique filename for Org-capture.
+The filename is based on the current timestamp."
+  (let ((filename (format "~/.org-agenda/syncup__issue__%s.org" (format-time-string "%Y%m%d%H%M%S"))))
+    (message "Inside function: Generated filename: %s" filename)
+    filename))
+#+END_SRC
+
+This function generates a unique filename for Org-capture based on the current timestamp.
+
+Example usage:
+#+BEGIN_SRC emacs-lisp
+(thwap/org-capture-get-unique-filename)
+#+END_SRC
+
+*** thwap/org-agenda-files-update
+#+BEGIN_SRC emacs-lisp
+(defun thwap/org-agenda-files-update ()
+  "Update the `org-agenda-files` variable.
+This function sets `org-agenda-files` and `org-timeblock-files` to the list of
+all `.org` files in the `~/.org-agenda` directory, and sets
+`org-timeblock-inbox-file` to `~/.org-agenda/tasks.org`."
+  (setq org-agenda-files (thwap/list-files-with-extension "~/.org-agenda" "org"))
+  (setq org-timeblock-files (thwap/list-files-with-extension "~/.org-agenda" "org"))
+  (setq org-timeblock-inbox-file "~/.org-agenda/tasks.org"))
+#+END_SRC
+
+This function updates the `org-agenda-files` variable to include all `.org` files in the `~/.org-agenda` directory, and sets the `org-timeblock-inbox-file` to `~/.org-agenda/tasks.org`.
+
+Example usage:
+#+BEGIN_SRC emacs-lisp
+(thwap/org-agenda-files-update)
+#+END_SRC
+
