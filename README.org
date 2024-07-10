@@ -65,7 +65,7 @@ packages. All of these are off by default with *VERY* few exceptions. Below you 
 packages that are natively supported. Further, we'll go over how you can add your own configuration options and take
 advantage of the configuration interface.
 
-*** Non-Optional packages
+*** Non-Optional/Default packages
 
 1. [[https://github.com/radian-software/straight.el][straight.el]]     - straight works with use-package to fetch and setup local installations.
 2. [[https://github.com/jwiegley/use-package][use-package]]     - use-package is a fantastic package management system for local installs.
@@ -75,4 +75,5 @@ advantage of the configuration interface.
 
 *** Optional packages
 
-1. [[https://github.com/joaotavora/eglot][eglot]]           - Emacs Polyglot LSP library (seems like everything uses this).
+Optional packages are getting their own special home in the _doc/_ directory, so please refer to that location
+for any documentation on what packages are included.

@@ -1,0 +1,74 @@
+* T.H.W.A.P. Emacs Configuration Optional Packages
+
+This document provides a list of all optional packages that can be enabled in the T.H.W.A.P. Emacs (thwapmacs) configuration.
+
+** Optional Packages
+
+Please note this is an initial pass list, I'll include links to documentation and get this list sorted, in the days
+to come. Currently there is no ryhme or reason here.
+
+1. **eglot**
+   - Description: Emacs Polyglot LSP library for various language support.
+   - Usage: Provides Language Server Protocol (LSP) integration.
+
+2. **lsp-mode**
+   - Description: Emacs client for Language Server Protocol.
+   - Usage: Alternative to eglot for LSP support.
+
+3. **company**
+   - Description: Modular in-buffer completion framework.
+   - Usage: Provides auto-completion capabilities.
+
+4. **magit**
+   - Description: A Git porcelain inside Emacs.
+   - Usage: Provides a comprehensive interface to Git.
+
+5. **projectile**
+   - Description: Project Interaction Library for Emacs.
+   - Usage: Manages and navigates projects.
+
+6. **helm**
+   - Description: Incremental completion and selection narrowing framework.
+   - Usage: Provides enhanced interface for various operations like searching.
+
+7. **ivy**
+   - Description: Incremental Vertical completion.
+   - Usage: Alternative to Helm for completion and narrowing.
+
+8. **org-roam**
+   - Description: Roam Research replica in Org-mode.
+   - Usage: Provides note-taking and linking capabilities.
+
+9. **yasnippet**
+    - Description: Yet another snippet extension for Emacs.
+    - Usage: Provides snippet/template system for Emacs.
+
+10. **markdown-mode**
+    - Description: Major mode for Markdown-formatted text files.
+    - Usage: Provides syntax highlighting and editing capabilities for Markdown.
+
+11. **python-mode**
+    - Description: Major mode for editing Python files.
+    - Usage: Enhances Python programming experience.
+
+12. **go-mode**
+    - Description: Major mode for the Go programming language.
+    - Usage: Provides support for Go language development.
+
+** Enabling Optional Packages
+
+To enable an optional package, you can use the Emacs customization interface:
+
+1. Press `C-c t C-c` to access the customization group.
+2. Enable the desired package from the list.
+
+Alternatively, you can manually enable packages by adding the appropriate `use-package` declaration in a file in your
+~/.emacs.d/thwap.d/ directory.
+
+Example:
+#+BEGIN_SRC emacs-lisp
+(use-package eglot
+  :ensure t
+  :config
+  (add-hook 'python-mode-hook 'eglot-ensure))
+#+END_SRC
