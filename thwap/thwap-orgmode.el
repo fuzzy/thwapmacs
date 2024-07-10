@@ -5,8 +5,7 @@
 ;; org layer toggles
 (defcustom thwap-orgmode nil
 	"Choose from the available org-mode packages"
-	:type '(set (const :tag "None" nil)
-							(const :tag "Org" orgmode)
+	:type '(set	(const :tag "Org" orgmode)
 							(const :tag "Org-Bullets" orgbullets)
 							(const :tag "Org-SuperAgenda" orgsuperagenda)
 							(const :tag "Org-Modern" orgmodern)
@@ -18,8 +17,7 @@
 ;; org-babel extras
 (defcustom thwap-orgbabel nil
 	"Choose extra packages for org-babel"
-	:type '(set (const :tag "None" nil)
-							(const :tag "ob-mermaid" obmermaid)
+	:type '(set (const :tag "ob-mermaid" obmermaid)
 							(const :tag "ob-napkin" obnapkin))
 	:group 'thwap-config)
 
@@ -48,13 +46,12 @@
 				org-export-with-toc t)
 	(thwap/org-agenda-files-update)
 	(setq org-todo-keywords
-				'((sequence "TODO" "IN-PROGRESS" "EPIC" "WAITING" "WONTDO" "DONE")))
+				'((sequence "TODO(t)" "WAITING(w)" "BLOCKED(b)" "|" "IN-PROGRESS(i)")
+					(sequence "WONTDO(o)" "DEPRECATED(e)" "STUPID(s)" "|" "DONE(d)")))
 	(setq org-capture-templates
-				`(("T" "THWAP TODO" entry (file+headline "~/.org-agenda/tasks.org" "THWAP Tasks")
-					 "* TODO %?\n  %i\n  %a")
-					("A" "APFM TODO" entry (file+headline "~/.org-agenda/tasks.org" "APFM Tasks")
-					 "* TODO %?\n  %i\n  %a")
-					("L" "LIFE TODO" entry (file+headline "~/.org-agenda/tasks.org" "LIFE Tasks")
+				`(("t" "TODO" entry (file+headline "~/.org-agenda/tasks.org" "Tasks")
+					 "* TODO %?\n  %a")
+					("l" "TODO" entry (file+headline "~/.org-agenda/tasks.org" "LIFE Tasks")
 					 "* TODO %?\n  %i\n  %a")
 					("a" "Appointment" entry (file+headline "~/.org-agenda/events.org" "Appointments")
 					 "* %?\n  %i\n  %a" :clock-in t :clock-resume t)
