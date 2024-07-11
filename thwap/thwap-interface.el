@@ -31,28 +31,43 @@
 ;; theme bits
 
 (when (memq 'modusthemes thwap-ui-themes)
-	(straight-use-package 'modus-themes)
-	(require 'modus-themes)
+	(use-package modus-themes
+		:straight t
+		:defer t
+		:config
+		(require 'modus-themes))
 	(message "Modus themes loaded."))
 
 (when (memq 'doomthemes thwap-ui-themes)
-	(straight-use-package 'doom-themes)
-	(require 'doom-themes)
+	(use-package doom-themes
+		:straight t
+		:defer t
+		:config
+		(require 'doom-themes))
 	(message "Doom themes loaded."))
 
 (when (memq 'sublimethemes thwap-ui-themes)
-	(straight-use-package 'sublime-themes)
-	(require 'sublime-themes)
+	(use-package sublime-themes
+		:straight t
+		:defer t
+		:config
+		(require 'sublime-themes))
 	(message "Sublime themes loaded."))
 
 (when (memq 'kaolinthemes thwap-ui-themes)
-	(straight-use-package 'kaolin-themes)
-	(require 'kaolin-themes)
+	(use-package kaolin-themes
+		:straight t
+		:defer t
+		:config
+		(require 'kaolin-themes))
 	(message "Kaolin themes loaded."))
 
 (when (memq 'alectthems thwap-ui-themes)
-	(straight-use-package 'alect-themes)
-	(require 'alect-themes)
+	(use-package alect-themes
+		:straight t
+		:defer t
+		:config
+		(require 'alect-themes))
 	(message "Alect themes loaded."))
 
 ;; load the theme specified in the config
@@ -66,18 +81,20 @@
 (when (and (eq 'alltheicons thwap-ui-icons) (not (eq 'nerdicons thwap-ui-icons)))
 	(use-package all-the-icons
 		:ensure t
+		:defer t
 		:straight t
 		:hook (dired-mode . all-the-icons-dired-mode))
 	(use-package all-the-icons-completion
 		:ensure t
 		:straight t
-		:defer
+		:defer t
 		:init
 		(all-the-icons-completion-mode 1))
 	(message "All-the-icons loaded."))
 
 (when (and (eq 'nerdicons thwap-ui-icons) (not (eq 'alltheicons thwap-ui-icons)))
 	(use-package nerd-icons
+		:defer t
 		:straight (nerd-icons
 							 :type git
 							 :host github
@@ -95,12 +112,13 @@
 	(message "Both all-the-icons and nerd-icons are enabled. Disabling nerd-icons.")
 	(use-package all-the-icons-dired
 		:ensure t
+		:defer t
 		:straight t
 		:hook (dired-mode . all-the-icons-dired-mode))
 	(use-package all-the-icons-completion
 		:ensure t
 		:straight t
-		:defer
+		:defer t
 		:init
 		(all-the-icons-completion-mode 1))
 	(message "All-the-icons loaded."))

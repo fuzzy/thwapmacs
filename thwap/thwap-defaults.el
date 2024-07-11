@@ -25,9 +25,12 @@
 ;;
 
 ;; golden-ratio
-(straight-use-package 'golden-ratio)
-(golden-ratio-mode 1)
-(setq golden-ratio-auto-scale t)
+(use-package golden-ratio
+	:straight t
+	:defer t
+	:config
+	(golden-ratio-mode 1)
+	(setq golden-ratio-auto-scale t))
 (message "Golden Ratio Mode Enabled")
 
 ;;
@@ -51,15 +54,21 @@
 ;; eval buffer is also very useful
 (thwap/add-key-binding "e b" 'eval-buffer "Eval buffer")
 
-(straight-use-package 'yasnippet)
-(require 'yasnippet)
-(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(use-package yasnippet
+	:straight t
+	:defer t
+	:config
+	(require 'yasnippet)
+	(setq yas-snippet-dirs '("~/.emacs.d/snippets")))
 (message "Yasnippet loaded")
 
-(straight-use-package 'yasnippet-snippets)
-(require 'yasnippet-snippets)
-(yas-reload-all)
-(yas-global-mode 1)
+(use-package yasnippet-snippets
+	:straight t
+	:defer t
+	:config
+	(require 'yasnippet-snippets)
+	(yas-reload-all)
+	(yas-global-mode 1))
 (message "Yasnippet-Snippets loaded")
 
 ;; yasnippet stuff

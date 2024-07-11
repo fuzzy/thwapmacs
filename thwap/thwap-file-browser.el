@@ -4,8 +4,8 @@
 ;;
 
 (defcustom thwap-dirbrowser nil
-	"Whether or not to enable treemacs."
-	:type '(choice (const :tag "None" nil)
+	"Choose which directory browser to use."
+	:type '(choice (const :tag "dired" dired)
 								 (const :tag "neotree" neotree)
 								 (const :tag "treemacs" treemacs))
 	:group 'thwap-config)
@@ -15,12 +15,16 @@
 ;; File Tree Browser
 ;;
 
+;; TODO dired bindings
+
 (when (eq 'neotree thwap-dirbrowser)
 	(use-package neotree
 		:straight t
+		:ensure t
+		:defer t
 		:config
 		(global-set-key [f8] 'neotree-toggle)
-		(thwap/add-key-binding "C-n" 'neotree-toggle "Toggle Neotree"))
+		(thwap/add-key-binding "C-t" 'neotree-toggle "Toggle Neotree"))
 	(message "neotree loaded"))
 
 
@@ -28,7 +32,7 @@
 	(use-package treemacs
 		:straight t
 		:ensure t
-		:demand t
+		:defer t
 		:config
 		(global-set-key [f8] 'treemacs)
 		(progn
