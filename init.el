@@ -20,6 +20,11 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Noto Sans Mono" :foundry "GOOG" :slant normal :weight regular :height 90 :width normal)))))
 
+(setq custom-file "~/.emacs.d/emacs-custom.el")
+(unless (file-exists-p custom-file)
+  (shell-command (concat "touch " custom-file)))
+(load custom-file)
+
 ;; thwap helpers
 (require 'thwap-helpers)
 ;; thwap config
