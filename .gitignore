@@ -1,6 +1,14 @@
 *~
 *.elc
+elpa/
+melpa/
+thwap.d/*.el
+*.lock
+.org-id-locations
+org-roam.db
 scratch
+.emacs.desktop
+emacs-custom.el
 recentf
 .cache*
 .lsp*
@@ -10,3 +18,4 @@ bookmarks*
 history*
 tramp*
 var*
+snippets/*

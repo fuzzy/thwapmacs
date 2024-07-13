@@ -16,7 +16,6 @@
 ;; theme to load
 (defcustom thwap-ui-theme 'wombat ;; 'modus-vivendi-tinted
   "Name of the theme to load."
-  :type 'string
   :group 'thwap-config)
 
 ;; all-the-icons toggle
@@ -70,11 +69,12 @@
 		(require 'alect-themes))
 	(message "Alect themes loaded."))
 
-;; load the theme specified in the config
+;; load the theme specified in the config if it is set
 ;; if things look wonky, you probably either need to install the
 ;; theme or you need to check your spelling.
-(load-theme thwap-ui-theme :no-confirm)
-(message "Theme loaded: %s" thwap-ui-theme)
+(if thwap-ui-theme
+			(load-theme thwap-ui-theme :no-confirm)
+			(message "Theme loaded: %s" thwap-ui-theme))
 
 ;; icon bits
 

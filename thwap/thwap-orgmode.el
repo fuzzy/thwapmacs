@@ -11,7 +11,9 @@
 							(const :tag "Org-Modern" orgmodern)
 							(const :tag "Org-TimeBlock" orgtimeblock)
 							(const :tag "Org-Download" orgdownload)
-							(const :tag "Org-Transclusion" orgtransclusion))
+							(const :tag "Org-Transclusion" orgtransclusion)
+							(const :tag "Org-Roam" orgroam)
+							(const :tag "Org-Publish" orgpublish))
 	:group 'thwap-config)
 
 ;; org-babel extras
@@ -134,17 +136,40 @@
 		(message "org-download loaded")))
 
 ;; org-roam
-;; (when (and thwap-org-enable-org thwap-org-enable-org-roam)
-;; 	(setq org-roam-directory "~/.org-agenda")
-;; 	(setq org-roam-db-location "~/.org-agenda/org-roam.db")
-;; 	(setq org-roam-completion-everywhere t)
-;; 	(setq org-roam-capture-templates
-;; 				'(("d" "default" plain "%?"
-;; 					 :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
-;; 					 :unnarrowed t)))
-;; 	(add-hook 'after-init-hook 'org-roam-mode)
-;; 	(add-hook 'org-mode-hook 'org-roam-mode)
-;; 	(add-hook 'org-mode-hook 'org-roam-ui-mode))
+(when (and (memq 'orgmode thwap-orgmode) (memq 'orgroam thwap-orgmode))
+	(use-package org-roam
+		:straight t
+		:defer t
+		:config
+		(add-hook 'org-mode-hook 'org-roam)
+		(org-roam-db-autosync-mode)
+		(thwap/ensure-directory-exists "~/.org-roam")
+		(setq org-roam-v2-ack t)
+		(setq org-roam-directory "~/.org-roam")
+		(setq org-roam-db-location "~/.org-roam/org-roam.db")
+		(setq org-roam-completion-everywhere t)
+		(setq org-roam-capture-templates
+					'(("d" "default" plain "%?"
+					 :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n")
+					 :unnarrowed t)))))
+
+;; org-publish
+(when (and (memq 'orgmode thwap-orgmode) (memq 'orgpublish thwap-orgmode))
+	(require 'ox-publish)
+	(thwap/ensure-directory-exists "~/www/html/org")
+	(thwap/ensure-directory-exists "~/.org")
+	(setq org-publish-project-alist
+      '(
+				("org-notes"
+				 :base-directory "~/.org/"
+				 :base-extension "org"
+				 :publishing-directory "~/www/html/org/"
+				 :recursive t
+				 :publishing-function org-html-publish-to-html
+				 :headline-levels 4             ; Just the default for this project.
+				 :auto-preamble t
+				 )
+				)))
 
 ;; ;; org-roam-ui
 ;; (when (and thwap-org-enable-org thwap-org-enable-org-roam thwap-org-enable-org-roam-ui)
