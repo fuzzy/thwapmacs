@@ -1,6 +1,8 @@
-(unless (file-exists-p "~/.emacs.d/custom-init.el")
-  (shell-command (concat "touch " "~/.emacs.d/custom-init.el")))
-(load-file "~/.emacs.d/custom-init.el")
+(setq custom-init "~/.emacs.d/custom-init.el")
+
+(unless (file-exists-p custom-init)
+  (dired-create-empty-file custom-init))
+(load-file custom-init)
 
 ;; custom set stuff
 (custom-set-variables
@@ -25,8 +27,9 @@
  '(default ((t (:family "Noto Sans Mono" :foundry "GOOG" :slant normal :weight regular :height 90 :width normal)))))
 
 (setq custom-file "~/.emacs.d/emacs-custom.el")
+
 (unless (file-exists-p custom-file)
-  (shell-command (concat "touch " custom-file)))
+  (dired-create-empty-file  custom-file))
 (load custom-file)
 
 ;; thwap helpers
