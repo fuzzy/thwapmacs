@@ -19,3 +19,4 @@ history*
 tramp*
 var*
 snippets/*
+custom-init.el
