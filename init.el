@@ -1,3 +1,7 @@
+(unless (file-exists-p "~/.emacs.d/custom-init.el")
+  (shell-command (concat "touch " "~/.emacs.d/custom-init.el")))
+(load-file "~/.emacs.d/custom-init.el")
+
 ;; custom set stuff
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
