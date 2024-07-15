@@ -27,7 +27,7 @@
 ;; golden-ratio
 (use-package golden-ratio
 	:straight t
-	:defer t
+	:demand t
 	:config
 	(golden-ratio-mode 1)
 	(setq golden-ratio-auto-scale t))
