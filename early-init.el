@@ -47,3 +47,8 @@
 	"Add a key binding to the T.H.W.A.P. keymap"
 	(define-key thwap-map (kbd key) command)
 	(add-to-list 'thwap-help-lines (format "%-12s: %s" (concat "C-c t " key) help-text)))
+
+(defun thwap/touch-file (filename)
+  "Create an empty file with FILENAME, or update its modification timestamp if it exists."
+  (with-temp-buffer
+    (write-region (point-min) (point-min) filename)))
