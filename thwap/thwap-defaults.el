@@ -3,18 +3,33 @@
 ;; Set some defaults
 ;;
 
+;; mouse interaction options
+(setq mouse-autoselect-window t
+			mouse-drag-and-drop-region t
+			mouse-drag-and-drop-region-cross-program t
+			xterm-mouse-mode t)
+
+;; toolbar and visual bell
+(setq tool-bar-mode nil
+			visible-bell 1)
+
 ;; store our auth info in an encrypted file
 (setq auth-sources '("~/.authinfo.gpg"))
+
 ;; automatically revert buffers when they change on disk
 (global-auto-revert-mode t)
+
 ;; display line numbers, TODO make this a config option for line number style
 (global-display-line-numbers-mode 1)
+
 ;; set our default warning level to error
 (setq warning-minimum-level :error)
+
 ;; set the default tab width to 2 spaces
 (setq-default tab-width 2)
 (setq tab-width 2)
 (setq indent-tabs-mode 1)
+
 ;; Set the default help lines
 (setq thwap-help-lines '("--------------"
 												 "All T.H.W.A.P. commands will start with 'C-c t'"

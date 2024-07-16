@@ -123,6 +123,10 @@
 		(all-the-icons-completion-mode 1))
 	(message "All-the-icons loaded."))
 
+;; Set the default font for the current frame and all new frames
+(set-frame-font "Noto Sans Mono-9:weight=normal:width=normal" nil t)
+(add-to-list 'default-frame-alist '(font . "Noto Sans Mono-9:weight=normal:width=normal"))
+
 
 (message "T.H.W.A.P. Interface settings loaded.")
 (provide 'thwap-interface)
