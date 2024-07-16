@@ -5,7 +5,8 @@
 
 (defcustom thwap-dirbrowser nil
 	"Choose which directory browser to use."
-	:type '(choice (const :tag "dired" dired)
+	:type '(choice (const :tag "none" nil)
+								 (const :tag "dired" dired)
 								 (const :tag "neotree" neotree)
 								 (const :tag "treemacs" treemacs))
 	:group 'thwap-config)

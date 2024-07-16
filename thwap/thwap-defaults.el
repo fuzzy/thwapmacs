@@ -3,6 +3,8 @@
 ;; Set some defaults
 ;;
 
+;; store our auth info in an encrypted file
+(setq auth-sources '("~/.authinfo.gpg"))
 ;; automatically revert buffers when they change on disk
 (global-auto-revert-mode t)
 ;; display line numbers, TODO make this a config option for line number style

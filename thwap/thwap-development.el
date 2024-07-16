@@ -6,7 +6,7 @@
 ;; dev layer toggles
 (defcustom thwap-development nil
 	"Whether or not to enable development assistance packages."
-	:type '(set (const :tag "None" nil)
+	:type '(set (const :tag "none" nil)
 							(const :tag "lsp" lspmode) ;; generally required for other modes
 							(const :tag "magit" magitmode) ;; git integration
 							(const :tag "magit forge" magitforge) ;; git forge integration
@@ -22,8 +22,9 @@
 
 (defcustom thwap-development-forge nil
 	"Whether or not to enable a directory browser."
-	:type '(choice (const :tag "GitHub" githubforge)
-								 (const :tag "GitLab" gitlabforge))
+	:type '(choice (const :tag "none" nil)
+								 (const :tag "github" githubforge)
+								 (const :tag "gitlab" gitlabforge))
 	:group 'thwap-config)
 
 (defcustom thwap-development-forge-key nil

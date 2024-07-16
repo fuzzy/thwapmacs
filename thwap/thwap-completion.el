@@ -6,7 +6,7 @@
 ;; company toggle
 (defcustom thwap-completion nil
 	"Choose the completion framework to use."
-	:type '(choice (const :tag "None" nil)
+	:type '(choice (const :tag "none" nil)
 								 (const :tag "company" companycomp)
 								 (const :tag "helm" helmcomp)
 								 (const :tag "ivy" ivycomp))
