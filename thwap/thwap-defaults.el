@@ -10,8 +10,8 @@
 			xterm-mouse-mode t)
 
 ;; toolbar and visual bell
-(setq tool-bar-mode nil
-			visible-bell 1)
+(tool-bar-mode -1)
+(setq	visible-bell 1)
 
 ;; store our auth info in an encrypted file
 (setq auth-sources '("~/.authinfo.gpg"))
