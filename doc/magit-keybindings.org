@@ -1,0 +1,44 @@
+* Magit and Forge Keybindings
+
+This document provides a table of keybindings for Magit and Forge, summarizing the commands available.
+
+** Magit Keybindings
+
+| Keybinding      | Command                      | Description                                |
+|-----------------|------------------------------|--------------------------------------------|
+| `C-c t g s`     | `magit-status`               | Show the status of the repository          |
+
+From inside the magit-status buffer:
+
+| Keybinding      | Command                      | Description                                |
+|-----------------|------------------------------|--------------------------------------------|
+| `s`             | `magit-stage`                | Stage the selected file                    |
+| `u`             | `magit-unstage`              | Unstage the selected file                  |
+| `c c`           | `magit-commit-create`        | Create a new commit                        |
+| `P p`           | `magit-push-current-to-pushremote` | Push current branch to the remote         |
+| `F f`           | `magit-pull-from-upstream`   | Pull changes from upstream                 |
+| `b b`           | `magit-branch-checkout`      | Checkout a branch                          |
+| `b c`           | `magit-branch-create`        | Create a new branch                        |
+| `l l`           | `magit-log-current`          | Show log for the current branch            |
+| `l r`           | `magit-reflog-current`       | Show the reflog for the current branch     |
+
+** Forge Keybindings
+
+| Keybinding      | Command                      | Description                                |
+|-----------------|------------------------------|--------------------------------------------|
+| `# y`           | `forge-pull`                 | Pull issues and pull requests from remote  |
+| `# a`           | `forge-create-issue`         | Create a new issue                         |
+| `# c`           | `forge-create-pullreq`       | Create a new pull request                  |
+| `# i`           | `forge-dispatch`             | Dispatch Forge commands                    |
+| `# b`           | `forge-browse-dwim`          | Browse to the repository or item at point  |
+| `# B`           | `forge-browse-remote`        | Browse to the remote repository            |
+| `# I`           | `forge-list-issues`          | List issues for the current repository     |
+| `# P`           | `forge-list-pullreqs`        | List pull requests for the current repository |
+| `# r`           | `forge-create-repository`    | Create a new repository                    |
+| `# n`           | `forge-notifications`        | Show notifications                         |
+
+** Notes
+
+- The `#` prefix is used for Forge-specific commands when within a Magit buffer.
+- These keybindings are typically used within Magit and Forge buffers for interacting with Git repositories and related services.
+
