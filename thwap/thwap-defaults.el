@@ -10,7 +10,8 @@
 			xterm-mouse-mode t)
 
 ;; toolbar and visual bell
-(tool-bar-mode -1)
+(when (display-graphic-p)
+	(tool-bar-mode -1))
 (setq	visible-bell 1)
 
 ;; store our auth info in an encrypted file
