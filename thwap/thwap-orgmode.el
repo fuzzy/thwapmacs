@@ -94,7 +94,7 @@
 (when (and (memq 'orgmode thwap-orgmode) (memq 'orgbullets thwap-orgmode))
 	(use-package org-bullets
 		:straight t
-		:defer t
+		:demand t
 		:config
 		(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 		(message "org-bullets loaded")))
@@ -112,7 +112,7 @@
 (when (and (memq 'orgmode thwap-orgmode) (memq 'orgmodern thwap-orgmode))
 	(use-package org-modern
 		:straight t
-		:defer t
+		:demand t
 		:config
 		(add-hook 'org-mode-hook 'org-modern-mode)
 		(message "org-modern loaded")))

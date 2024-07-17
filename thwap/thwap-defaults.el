@@ -73,7 +73,7 @@
 
 (use-package yasnippet
 	:straight t
-	:defer t
+	:demand t
 	:config
 	(require 'yasnippet)
 	(setq yas-snippet-dirs '("~/.emacs.d/snippets")))

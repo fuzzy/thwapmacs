@@ -37,14 +37,14 @@
 (when (memq 'lspmode thwap-development)
 	(use-package lsp-mode
 		:straight t
-		:defer t)
+		:demand t)
 	(use-package lsp-ui
 		:straight t
-		:defer t)
+		:demand t)
 	(when (eq 'treemacs thwap-dirbrowser)
 		(use-package lsp-treemacs
 			:straight t
-			:defer t))
+			:demand t))
 	(setq gc-cons-threshold 100000000)
 	(setq read-process-output-max (* 1024 1024))
 	(thwap/add-key-binding "l" 'lsp-keymap-prefix "lsp-keymap-prefix")
@@ -59,30 +59,37 @@
 (when (memq 'magitmode thwap-development)
 	(use-package magit
 		:straight t
-		:defer t)
-	(when (memq 'magitforge thwap-development)
-		(use-package forge
-			:straight t
-			:defer t
-			:after magit))
-	(when (memq 'magittodos thwap-development)
-		(use-package magit-todos
-			:straight t
-			:defer t
-			:after magit
-			:config
-			(add-hook 'magit-mode-hook 'magit-todos-mode)))
+		:demand t)
+
 	(thwap/add-key-binding "g s" 'magit-status "Git status (magit entrypoint)")
 	(thwap/add-key-binding "g l" 'magit-log "Git log (magit entrypoint")
 	(thwap/add-key-binding "g b" 'magit-blame "Git blame (magit entrypoint")
 	(thwap/add-key-binding "g f" 'magit-find-file "Git find file (magit entrypoint")
+	
+	(when (memq 'magitforge thwap-development)
+		(use-package forge
+			:straight t
+			:demand t
+			:after magit)
+		
+		(thwap/add-key-binding "f p" 'forge-pull "Update local copy of forge data / Do initial setup")
+		(thwap/add-key-binding "f a" 'forge-add-repository "Add current file's repository to magit+forge")
+		(thwap/add-key-binding "f l" 'forge-list-topics "Show issues/pull requests"))
+	
+	(when (memq 'magittodos thwap-development)
+		(use-package magit-todos
+			:straight t
+			:demand t
+			:after magit
+			:config
+			(add-hook 'magit-mode-hook 'magit-todos-mode)))
 	(message "magit loaded"))
 
 ;; projectile
 (when (memq 'projectilemode thwap-development)
 	(use-package projectile
 		:straight t
-		:defer t
+		:demand t
 		:config
 		(projectile-mode +1)
 		(thwap/add-key-binding "p" 'projectile-command-map "Projectile commands"))
@@ -92,13 +99,13 @@
 (when (memq 'copilotmode thwap-development)
 	(use-package dash
 		:straight t
-		:defer t)
+		:demand t)
 	(use-package editorconfig
 		:straight t
-		:defer t)
+		:demand t)
 	(use-package copilot
 		:straight (:host github :repo "zerolfx/copilot.el" :files ("dist" "*.el"))
-		:defer t
+		:demand t
 		:ensure t
 		:config
 		;; you can utilize :map :hook and :config to customize copilot
