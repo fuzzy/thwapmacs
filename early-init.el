@@ -39,9 +39,7 @@
   (load bootstrap-file nil 'nomessage))
 
 ;; Set up straight.el to use use-package
-(use-package use-package
-	:straight t
-	:defer t)
+(straight-use-package 'use-package)
 
 (defun thwap/add-key-binding (key command help-text)
 	"Add a key binding to the T.H.W.A.P. keymap"
