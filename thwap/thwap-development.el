@@ -17,6 +17,7 @@
 							(const :tag "python" pythonmode) ;; python language support
 							(const :tag "elpy" elpymode) ;; python language support (elpy)							
 							(const :tag "terraform" terraformmode) ;; terraform language support
+							(const :tag "typescript" typescriptmode) ;; typescript language support
 							(const :tag "yaml" yamlmode)) ;; yaml language support
 	:group 'thwap-config)
 
@@ -175,6 +176,15 @@
 			:config
 			(add-hook 'terraform-mode-hook #'company-terraform-init)))
 	(message "terraform-mode loaded"))
+
+;; typescript-mode
+(when (memq 'typescriptmode thwap-development)
+	(use-package typescript-mode
+		:straight t
+		:defer t
+		:hook (typescript-mode-hook . turn-on-font-lock))
+	(message "typescript-mode loaded"))
+
 
 ;; yaml-mode
 (when (memq 'yamlmode thwap-development)
