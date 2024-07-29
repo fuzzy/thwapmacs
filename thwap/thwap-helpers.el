@@ -1,4 +1,64 @@
 ;;
+;; Helper functions for keybindings
+;;
+
+(defun thwap/add-key-binding (key command help-text)
+	"Add a key binding to the T.H.W.A.P. keymap"
+	(define-key thwap-map (kbd key) command)
+	(add-to-list 'thwap-help-lines (format "%-12s: %s" (concat "C-c t " key) help-text)))
+
+;;
+;; Helper functions for files
+;;
+
+(defun thwap/touch-file (filename)
+  "Create an empty file with FILENAME, or update its modification timestamp if it exists."
+  (with-temp-buffer
+    (write-region (point-min) (point-min) filename)))
+
+
+;;
+;; Helper functions for Hydra
+;;
+
+(defun thwap/create-hydra-menu (name menu-string input-data-list)
+  "Create a hydra menu with NAME, MENU-STRING, and INPUT-DATA-LIST."
+  (let ((formatted-menu-items "")
+        (commands '())
+        (counter 0))
+    ;; Format the menu items with newlines after every third item
+    (dolist (item input-data-list)
+      (setq formatted-menu-items
+            (concat formatted-menu-items
+                    (format "_%s_: %-20s" (nth 0 item) (nth 1 item))))
+      (let ((cmd (nth 2 item)))
+        (setq commands (append commands
+                               (list (list (nth 0 item)
+                                           (if (symbolp cmd)
+                                               `(lambda () (interactive) (call-interactively ',cmd))
+                                             `(lambda () (interactive) (funcall ,cmd))))))))
+      (setq counter (1+ counter))
+      (when (= (mod counter 3) 0)
+        (setq formatted-menu-items (concat formatted-menu-items "\n"))))
+    ;; Add the quit command to the formatted menu and commands
+    (setq formatted-menu-items (concat formatted-menu-items "\n\n_q_: Quit\n"))
+    (setq commands (append commands '(("q" nil :exit t))))
+    ;; Ensure there are no extra spaces or newlines
+    (setq formatted-menu-items (string-trim-right formatted-menu-items))
+    ;; Debugging: Print formatted-menu-items and commands
+    (message "Formatted Menu Items: %s" formatted-menu-items)
+    (message "Commands: %s" commands)
+    ;; Combine the hydra body, formatted menu items, and commands
+    (eval `(defhydra ,name (:color blue :hint nil)
+             ,(concat "\n" menu-string "\n"
+                      "-----------------------------------------------------\n"
+                      formatted-menu-items
+                      "\n")
+             ,@(mapcar (lambda (cmd)
+                         `(,(nth 0 cmd) ,(nth 1 cmd)))
+                       commands)))))
+
+;;
 ;; Helper functions for the dashboard
 ;;
 
