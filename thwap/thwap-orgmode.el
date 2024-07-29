@@ -38,6 +38,18 @@
 		:straight t
 		:defer t
 		:config
+		(add-to-list 'thwap-base-hydra-map '("C-o" "Org Dashboard" thwap-org-hydra/body))
+		(setq thwap-org-hydra-map '(("a" "Agenda" 'org-agenda)
+																("c" "Capture" 'org-capture)
+																("t" "List TODO" 'org-todo-list)
+																("l" "Link" 'org-store-link)
+																("r" "Refile" 'org-refile)
+																("e" "Export" 'org-export-dispatch)
+																("c" "Clock" 'thwap-org-clock-hydra/body)))
+		(setq thwap-org-clock-hydra-map '(("i" "Clock" 'org-clock-in)
+																			("o" "Out" 'org-clock-out)
+																			("r" "Report" 'org-clock-report)
+																			("c" "Cancel" 'org-clock-cancel)))
 		(thwap/ensure-directory-exists "~/.org-agenda")
 		(setq browse-url-browser-function 'browse-url-generic
 					browse-url-generic-program "firefox-esr"

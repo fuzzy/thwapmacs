@@ -6,6 +6,11 @@
 	(when (memq 'magitforge thwap-development)
 		(thwap/create-hydra-menu 'thwap-forge-hydra "Magit Forge Menu" thwap-forge-hydra-map)))
 
+;; org hydra
+(when (memq 'orgmode thwap-orgmode)
+	(thwap/create-hydra-menu 'thwap-org-hydra "Org Menu" thwap-org-hydra-map)
+	(thwap/create-hydra-menu 'thwap-org-clock-hydra "Org Clock Menu" thwap-org-clock-hydra-map))
+
 ;; yasnippet hydra
 (thwap/create-hydra-menu 'thwap-yasnippet-hydra "Yasnippet Menu" thwap-yasnippet-hydra-map)
 
