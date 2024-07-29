@@ -58,6 +58,11 @@
 
 ;; magit
 (when (memq 'magitmode thwap-development)
+	(add-to-list 'thwap-base-hydra-map '("g" "MaGit" 'thwap-magit-hydra/body))
+	(setq thwap-magit-hydra-map '(("s" "Git status" 'magit-status)
+																("l" "Git log" 'magit-log)
+																("b" "Git blame" 'magit-blame)
+																("f" "Git find file" 'magit-find-file)))
 	(use-package magit
 		:straight t
 		:demand t)
@@ -72,7 +77,11 @@
 			:straight t
 			:demand t
 			:after magit)
-		
+
+		(add-to-list 'thwap-magit-hydra-map '("C-f" "Forge" 'thwap-forge-hydra/body))
+		(setq thwap-forge-hydra-map '(("p" "Forge pull" 'forge-pull)
+																	("a" "add repo" 'forge-add-repository)
+																	("l" "list topics" 'forge-list-topics)))
 		(thwap/add-key-binding "f p" 'forge-pull "Update local copy of forge data / Do initial setup")
 		(thwap/add-key-binding "f a" 'forge-add-repository "Add current file's repository to magit+forge")
 		(thwap/add-key-binding "f l" 'forge-list-topics "Show issues/pull requests"))
@@ -83,7 +92,9 @@
 			:demand t
 			:after magit
 			:config
-			(add-hook 'magit-mode-hook 'magit-todos-mode)))
+			(add-hook 'magit-mode-hook 'magit-todos-mode))
+		(add-to-list 'thwap-magit-hydra-map '("t" "Git Todos" 'magit-todos-list))
+		(thwap/add-key-binding "g t" 'magit-todos-list "List todos in current repository"))
 	(message "magit loaded"))
 
 ;; projectile
@@ -93,6 +104,8 @@
 		:demand t
 		:config
 		(projectile-mode +1)
+		;; (setq projectile-completion-system 'ivy)
+		(add-to-list 'thwap-base-hydra-map '("p" "Project" 'projectile-command-map))
 		(thwap/add-key-binding "p" 'projectile-command-map "Projectile commands"))
 	(message "projectile loaded"))
 
