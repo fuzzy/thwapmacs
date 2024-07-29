@@ -52,8 +52,12 @@
 (message "Golden Ratio Mode Enabled")
 
 ;;
-;; Set up the T.H.W.A.P. keybindings
+;; Set up the T.H.W.A.P. keybindings and hydra
 ;;
+
+(use-package hydra
+	:straight t
+	:demand t)
 
 ;; The T.H.W.A.P. Map
 ;; This is the base starting point for the T.H.W.A.P. keybindings
@@ -72,6 +76,17 @@
 ;; eval buffer is also very useful
 (thwap/add-key-binding "e b" 'eval-buffer "Eval buffer")
 
+(setq thwap-yasnippet-hydra-map '(("n" "New Snippet" 'yas-new-snippet)
+																	("r" "Reload Snippets" 'yas-reload-all)
+																	("l" "Load Snippets" 'yas-load-directory)))
+
+(setq thwap-base-hydra-map '(("C-c" "Config Customizer" (lambda () (interactive) (customize-group 'thwap-config)))
+															("c" "(Un)Comment Region" 'comment-or-uncomment-region)
+															("e" "Eval Buffer" 'eval-buffer)
+															("C-t" "Toggle Treemacs" '(lambda () (interactive) (treemacs)))
+															("y" "YaSnippet Menu" 'thwap-yasnippet-hydra/body)))
+
+	
 (use-package yasnippet
 	:straight t
 	:demand t
@@ -91,6 +106,8 @@
 
 ;; yasnippet stuff
 (thwap/add-key-binding "y n" 'yas-new-snippet "Create a new yasnippet")
+
+(setq truncate-lines nil)
 
 (message "T.H.W.A.P. Defaults Loaded")
 ;; our provide statement
