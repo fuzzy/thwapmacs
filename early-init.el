@@ -8,6 +8,8 @@
 ;; Add the thwap.d directory to the load path
 (add-to-list 'load-path (expand-file-name "thwap.d" user-emacs-directory))
 
+;; thwap helpers
+(require 'thwap-helpers)
 
 ;;
 ;; Package management dependencies

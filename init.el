@@ -1,6 +1,3 @@
-;; thwap helpers
-(require 'thwap-helpers)
-
 (setq custom-init "~/.emacs.d/custom-init.el")
 
 (unless (file-exists-p custom-init)
