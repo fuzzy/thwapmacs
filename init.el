@@ -1,3 +1,6 @@
+;; thwap helpers
+(require 'thwap-helpers)
+
 (setq custom-init "~/.emacs.d/custom-init.el")
 
 (unless (file-exists-p custom-init)
@@ -10,8 +13,6 @@
   (thwap/touch-file custom-file))
 (load custom-file)
 
-;; thwap helpers
-(require 'thwap-helpers)
 ;; thwap config
 (require 'thwap-configuration)
 ;; thwap defaults
