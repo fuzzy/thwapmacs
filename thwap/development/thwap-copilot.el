@@ -17,4 +17,3 @@
 	(define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion))
 
 (message "copilot loaded")
-(provide 'thwap-copilot)

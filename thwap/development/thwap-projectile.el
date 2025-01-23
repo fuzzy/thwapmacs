@@ -8,4 +8,3 @@
 	(thwap/add-key-binding "p" 'projectile-command-map "Projectile commands"))
 
 (message "projectile loaded")
-(provide 'thwap-projectile)

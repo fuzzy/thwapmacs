@@ -14,4 +14,3 @@
 		(add-hook 'terraform-mode-hook #'company-terraform-init)))
 
 (message "terraform-mode loaded")
-(provide 'thwap-terraform)

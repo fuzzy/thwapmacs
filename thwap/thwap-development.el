@@ -1,5 +1,3 @@
-(add-to-list 'load-path (expand-file-name "thwap/development" user-emacs-directory))
-
 ;;
 ;; development assistance packages
 ;;
@@ -39,47 +37,47 @@
 
 ;; lsp-mode
 (when (memq 'lspmode thwap-development)
-	(load "thwap-lsp"))
+	(load-file "~/.emacs.d/thwap/development/thwap-lsp.el"))
 
 ;; magit
 (when (memq 'magitmode thwap-development)
-	(load "thwap-magit"))
+	(load-file "~/.emacs.d/thwap/development/thwap-magit.el"))
 
 ;; projectile
 (when (memq 'projectilemode thwap-development)
-	(load "thwap-projectile"))
+	(load-file "~/.emacs.d/thwap/development/thwap-projectile.el"))
 
 ;; co-pilot
 (when (memq 'copilotmode thwap-development)
-	(load "thwap-copilot"))
+	(load-file "~/.emacs.d/thwap/development/thwap-copilot.el"))
 
 ;; go-mode
 (when (memq 'gomode thwap-development)
-	(load "thwap-go"))
+	(load-file "~/.emacs.d/thwap/development/thwap-go.el"))
 
 ;; python-mode
 (when (memq 'pythonmode thwap-development)
-	(load "thwap-python"))
+	(load-file "~/.emacs.d/thwap/development/thwap-python.el"))
 
 ;; nim-mode
 (when (memq 'nimmode thwap-development)
-	(load "thwap-nim"))
+	(load-file "~/.emacs.d/thwap/development/thwap-nim.el"))
 
 ;; v-mode
 (when (memq 'vlangmode thwap-development)
-	(load "thwap-v"))
+	(load-file "~/.emacs.d/thwap/development/thwap-v.el"))
 
 ;; terraform-mode
 (when (memq 'terraformmode thwap-development)
-	(load "thwap-terraform"))
+	(load-file "~/.emacs.d/thwap/development/thwap-terraform.el"))
 
 ;; typescript-mode
 (when (memq 'typescriptmode thwap-development)
-	(load "thwap-typescript"))
+	(load-file "~/.emacs.d/thwap/development/thwap-typescript.el"))
 
 ;; yaml-mode
 (when (memq 'yamlmode thwap-development)
-	(load "thwap-yaml"))
+	(load-file "~/.emacs.d/thwap/development/thwap-yaml.el"))
 
 (message "T.H.W.A.P. development assistance packages loaded")
 (provide 'thwap-development)

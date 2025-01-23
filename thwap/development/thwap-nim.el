@@ -3,4 +3,3 @@
 	:defer t)
 
 (message "nim-mode loaded")
-(provide 'thwap-nim)

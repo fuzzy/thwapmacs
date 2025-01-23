@@ -17,4 +17,3 @@
 	:config
 	(require 'eglot))
 (message "lsp-mode loaded")
-(provide 'thwap-lsp)

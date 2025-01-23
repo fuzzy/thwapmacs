@@ -12,4 +12,3 @@
 							(setq-local electric-layout-rules nil))))
 
 (message "yaml-mode loaded")
-(provide 'thwap-yaml)

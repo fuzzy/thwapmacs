@@ -36,5 +36,4 @@
 	(add-to-list 'thwap-magit-hydra-map '("t" "Git Todos" 'magit-todos-list))
 	(thwap/add-key-binding "g t" 'magit-todos-list "List todos in current repository"))
 
-(message "magit loaded"))
-(provide 'thwap-magit)
+(message "magit loaded")

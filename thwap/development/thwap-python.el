@@ -20,4 +20,3 @@
 	:hook (python-mode . python-black-on-save-mode))
 
 (message "python-mode loaded")
-(provide 'thwap-python)

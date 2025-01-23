@@ -27,4 +27,3 @@
 (add-hook 'before-save-hook 'gofmt-before-save)
 
 (message "go-mode loaded")
-(provide 'thwap-go)

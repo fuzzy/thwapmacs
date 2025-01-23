@@ -12,4 +12,3 @@
   :mode ("\\(\\.v?v\\|\\.vsh\\)$" . 'v-mode))
 
 (message "Loading v-mode...done")
-(provide 'thwap-v)
