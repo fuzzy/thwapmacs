@@ -15,9 +15,10 @@
 							(const :tag "copilot" copilotmode) ;; code completion
 							(const :tag "go" gomode) ;; go language support
 							(const :tag "python" pythonmode) ;; python language support
+							(const :tag "typescript" typescriptmode) ;; typescript language support
+							(const :tag "nim" nimmode) ;; nim language support
 							(const :tag "elpy" elpymode) ;; python language support (elpy)							
 							(const :tag "terraform" terraformmode) ;; terraform language support
-							(const :tag "typescript" typescriptmode) ;; typescript language support
 							(const :tag "yaml" yamlmode)) ;; yaml language support
 	:group 'thwap-config)
 
@@ -172,6 +173,13 @@
 		:after python
 		:hook (python-mode . python-black-on-save-mode))
 	(message "python-mode loaded"))
+
+;; nim-mode
+(when (memq 'nimmode thwap-development)
+	(use-package nim-mode
+		:straight t
+		:defer t)
+	(message "nim-mode loaded"))
 
 ;; terraform-mode
 (when (memq 'terraformmode thwap-development)
