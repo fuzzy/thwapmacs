@@ -17,6 +17,7 @@
 							(const :tag "python" pythonmode) ;; python language support
 							(const :tag "typescript" typescriptmode) ;; typescript language support
 							(const :tag "nim" nimmode) ;; nim language support
+							(const :tag "v-lang" vlangmode) ;; v language support
 							(const :tag "elpy" elpymode) ;; python language support (elpy)							
 							(const :tag "terraform" terraformmode) ;; terraform language support
 							(const :tag "yaml" yamlmode)) ;; yaml language support
@@ -180,6 +181,20 @@
 		:straight t
 		:defer t)
 	(message "nim-mode loaded"))
+
+;; v-mode
+(use-package v-mode
+  :straight (v-mode
+             :type git
+             :host github
+             :repo "damon-kwok/v-mode"
+             :files ("tokens" "v-mode.el"))
+  :config
+  :bind-keymap
+  ("M-z" . v-menu)
+  ("<f6>" . v-menu)
+  ("C-c C-f" . v-format-buffer)
+  :mode ("\\(\\.v?v\\|\\.vsh\\)$" . 'v-mode))
 
 ;; terraform-mode
 (when (memq 'terraformmode thwap-development)
