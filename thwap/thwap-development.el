@@ -13,13 +13,14 @@
 							(const :tag "projectile" projectilemode) ;; project management
 							(const :tag "copilot" copilotmode) ;; code completion
 							(const :tag "go" gomode) ;; go language support
+							(const :tag "elpy" elpymode) ;; python language support (elpy)
 							(const :tag "python" pythonmode) ;; python language support
 							(const :tag "typescript" typescriptmode) ;; typescript language support
 							(const :tag "nim" nimmode) ;; nim language support
 							(const :tag "v-lang" vlangmode) ;; v language support
-							(const :tag "elpy" elpymode) ;; python language support (elpy)							
 							(const :tag "terraform" terraformmode) ;; terraform language support
-							(const :tag "yaml" yamlmode)) ;; yaml language support
+							(const :tag "yaml" yamlmode) ;; yaml language support
+							(const :tag "zig" zigmode)) ;; zig language support)
 	:group 'thwap-config)
 
 (defcustom thwap-development-forge nil
@@ -78,6 +79,10 @@
 ;; yaml-mode
 (when (memq 'yamlmode thwap-development)
 	(load-file "~/.emacs.d/thwap/development/thwap-yaml.el"))
+
+;; zig-mode
+(when (memq 'zigmode thwap-development)
+	(load-file "~/.emacs.d/thwap/development/thwap-zig.el"))
 
 (message "T.H.W.A.P. development assistance packages loaded")
 (provide 'thwap-development)
