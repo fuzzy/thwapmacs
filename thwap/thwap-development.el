@@ -15,6 +15,7 @@
 							(const :tag "go" gomode) ;; go language support
 							(const :tag "elpy" elpymode) ;; python language support (elpy)
 							(const :tag "python" pythonmode) ;; python language support
+							(const :tag "rust" rustmode) ;; rust language support
 							(const :tag "typescript" typescriptmode) ;; typescript language support
 							(const :tag "nim" nimmode) ;; nim language support
 							(const :tag "v-lang" vlangmode) ;; v language support
@@ -59,6 +60,10 @@
 ;; python-mode
 (when (memq 'pythonmode thwap-development)
 	(load-file "~/.emacs.d/thwap/development/thwap-python.el"))
+
+;; rust-mode
+(when (memq 'rustmode thwap-development)
+	(load-file "~/.emacs.d/thwap/development/thwap-rust.el"))
 
 ;; nim-mode
 (when (memq 'nimmode thwap-development)
