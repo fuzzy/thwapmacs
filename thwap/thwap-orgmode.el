@@ -23,17 +23,12 @@
 							(const :tag "ob-napkin" obnapkin))
 	:group 'thwap-config)
 
-(defcustom thwap-org-openai-api-token nil
-	"OpenAI API Token for use in org-ai. (Setting this enables the org-ai support.)"
-	:type 'string
-	:group 'thwap-config)
-
 ;;
 ;; Ensure Org mode is installed and loaded
 ;;
 
 ;; base
-(when (memq 'orgmode thwap-orgmode)
+when (memq 'orgmode thwap-orgmode)
 	(use-package org
 		:straight t
 		:defer t
@@ -208,19 +203,6 @@
 		(add-to-list 'org-src-lang-modes '("mermaid" . mermaid))
 		(add-to-list 'org-babel-load-languages '(mermaid . t))
 		(message "ob-mermaid loaded")))
-
-;; org-ai
-(when (and (memq 'orgmode thwap-orgmode) thwap-org-openai-api-token)
-	(straight-use-package
-	 '(org-ai :type git :host github :repo "rksm/org-ai"
-						:local-repo "org-ai"
-						:defer t
-						:files ("*.el" "README.md" "snippets")))
-	(setq org-ai-default-chat-model "gpt-3.5-turbo")
-	(setq org-ai-openai-api-token thwap-org-openai-api-token)
-	(org-ai-global-mode)
-	(org-ai-install-yasnippets)
-	(message "org-ai loaded"))
 
 
 (message "T.H.W.A.P. Org-Mode settings loaded")

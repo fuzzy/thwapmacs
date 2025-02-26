@@ -22,6 +22,8 @@
 (require 'thwap-completion)
 ;; development configuration
 (require 'thwap-development)
+;; llm configuration
+(require 'thwap-llm)
 ;; org configuration
 (require 'thwap-orgmode)
 
