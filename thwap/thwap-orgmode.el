@@ -28,7 +28,7 @@
 ;;
 
 ;; base
-when (memq 'orgmode thwap-orgmode)
+(when (memq 'orgmode thwap-orgmode)
 	(use-package org
 		:straight t
 		:defer t

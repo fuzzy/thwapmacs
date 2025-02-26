@@ -20,13 +20,13 @@
 		(setq gptel-api-key thwap-llm-gptel-chatgpt-token)))
 
 ;; org-ai
-(when (and (memq 'orgmode thwap-orgmode) thwap-org-openai-api-token)
+(when thwap-org-openai-api-token
 	(straight-use-package
 	 '(org-ai :type git :host github :repo "rksm/org-ai"
 						:local-repo "org-ai"
 						:defer t
 						:files ("*.el" "README.md" "snippets")))
-	(setq org-ai-default-chat-model "gpt-3.5-turbo")
+	(setq org-ai-default-chat-model "gpt-4-turbo")
 	(setq org-ai-openai-api-token thwap-org-openai-api-token)
 	(org-ai-global-mode)
 	(org-ai-install-yasnippets)
