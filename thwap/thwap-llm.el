@@ -17,7 +17,11 @@
 		:straight t
 		:demand t
 		:config
-		(setq gptel-api-key thwap-llm-gptel-chatgpt-token)))
+		(setq gptel-model 'deepseek-reasoner)
+		(setq gptel-backend (gptel-make-deepseek "DeepSeek"
+													:stream t
+													:key thwap-org-openai-api-token))
+		(setq gptel-api-key thwap-org-openai-api-token)))
 
 ;; org-ai
 (when thwap-org-openai-api-token
@@ -27,7 +31,8 @@
 						:defer t
 						:files ("*.el" "README.md" "snippets")))
 	(setq org-ai-default-chat-model "gpt-4-turbo")
-	(setq org-ai-openai-api-token thwap-org-openai-api-token)
+	(setq org-ai-openai-api-token thwap-llm-gptel-chatgpt-token)
+	(setq org-ai-auto-fill t)
 	(org-ai-global-mode)
 	(org-ai-install-yasnippets)
 	(message "org-ai loaded"))
