@@ -6,8 +6,8 @@
 ;; mouse interaction options
 (setq mouse-autoselect-window t
 			mouse-drag-and-drop-region t
-			mouse-drag-and-drop-region-cross-program t
-			xterm-mouse-mode t)
+			mouse-drag-and-drop-region-cross-program t)
+(xterm-mouse-mode 1)
 
 ;; toolbar and visual bell
 (when (display-graphic-p)
